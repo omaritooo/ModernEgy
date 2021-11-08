@@ -2,7 +2,7 @@
  <div class="overflow-x-hidden bg-site-primary">
    <Tutorial id="header"  />
     <Header :cities="cities" :dev="projects"/>
-          <Partner :partners="info"/>
+    <Partner :partners="info"/>
 
    
     <ContactFrom id="contact"/>

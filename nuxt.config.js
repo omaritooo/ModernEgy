@@ -81,7 +81,7 @@ export default {
         "faPinterest",
         "faTelegramPlane"
       ],
-      solid: ['faArrowRight']
+      solid: ['faArrowRight', 'faTimes']
     }
   },
   

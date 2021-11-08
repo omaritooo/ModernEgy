@@ -1,16 +1,27 @@
 <template>
-  <div class="bg-transparent" style=" background: transparent;">
+  <div class="" style="">
     <client-only>
-      <div  class="w-1/2 bg-transparent">
-        <ModelObj  backgroundAlpha="0"
-        backgroundColor="0" src="/govArea.obj" mtl="/govArea.mtl" />
-      </div>
+      <nuxt-link to="">
+        <div  class="bg-white">
+          <ModelGltf  class="rounded-full" backgroundAlpha="0"
+          backgroundColor="#FFF" :src="`/${namer}.glb`"  />
+        </div>
+      </nuxt-link>
     </client-only>
   </div>
 </template>
 <script>
-import { ModelObj } from "vue-3d-model";
+import { ModelGltf  } from "vue-3d-model";
 export default {
-  components: { ModelObj },
+  data(){
+    return{
+     
+    }
+  },
+  props: {
+    namer: String
+  },
+  
+  components: { ModelGltf  },
 };
 </script>

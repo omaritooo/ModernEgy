@@ -1,5 +1,5 @@
 <template>
-  <div class="z-30 flex flex-col px-32 py-10 my-16">
+  <div class="z-30 flex flex-col px-32 py-10 mb-16">
       <div class="flex justify-center h-full my-2" style="height: fit-content"  >
           <div class="text-white bg-site-secondary rounded-t-md ">
               <div class="px-10 py-2 text-center ">
@@ -7,8 +7,9 @@
               </div>
               <hr class="text-gray-100" >
               <div class="flex flex-col py-4 space-y-5 text-left" v-for="city in cities" :key="city.index">
-                  <button @click="cityCenter(city)" class="px-4 py-2 text-left clicker">
+                  <button @click="cityCenter(city)" class="px-4 py-2 text-left clicker " :id="city.id" :class="{'active' : city.id == 24}">
                       <!-- NEW Capital --> {{city.title}}
+                      
 
                   </button>
                   
@@ -27,7 +28,7 @@
     <div>
       <span class="rounded-md shadow-sm">
         <button
-          @click="isMenuOpen1 = !isMenuOpen1"
+          @click="menu1()"
           type="button"
           class="inline-flex items-center justify-between w-full h-10 px-4 py-4 text-sm font-medium leading-5 text-gray-100 transition duration-150 ease-in-out border-none rounded-md bg-site-secondary focus:outline-none focus:border-blue-300 focus:shadow-outline-blue btn-focus"
           id="options-menu"
@@ -51,7 +52,7 @@
       leave-to-class="transform scale-95 opacity-0"
     >
       <div
-        v-if="isMenuOpen1"
+        v-if="menus.Menu1"
         class="absolute right-0 z-20 w-56 mt-2 overflow-hidden text-sm origin-top-right rounded-md shadow-lg bg-site-secondary"
       >
         <div
@@ -88,7 +89,7 @@
     <div>
       <span class="rounded-md shadow-sm">
         <button
-          @click="isMenuOpen2 = !isMenuOpen2"
+          @click="menu2()"
           type="button"
           class="inline-flex items-center justify-between w-full h-10 px-4 py-4 text-sm font-medium leading-5 text-gray-100 transition duration-150 ease-in-out border-none rounded-md bg-site-secondary focus:outline-none focus:border-blue-300 focus:shadow-outline-blue btn-focus"
           id="options-menu"
@@ -112,7 +113,7 @@
       leave-to-class="transform scale-95 opacity-0"
     >
       <div
-        v-if="isMenuOpen2"
+        v-if="menus.Menu2"
         class="absolute right-0 z-20 w-56 mt-2 overflow-hidden text-sm origin-top-right rounded-md shadow-lg bg-site-secondary"
       >
         <div
@@ -149,7 +150,7 @@
     <div>
       <span class="rounded-md shadow-sm">
         <button
-          @click="isMenuOpen3 = !isMenuOpen3"
+          @click="menu3()"
           type="button"
           class="inline-flex items-center justify-between w-full h-10 px-4 py-4 text-sm font-medium leading-5 text-gray-100 transition duration-150 ease-in-out border-none rounded-md bg-site-secondary focus:outline-none focus:border-blue-300 focus:shadow-outline-blue btn-focus"
           id="options-menu"
@@ -173,7 +174,7 @@
       leave-to-class="transform scale-95 opacity-0"
     >
       <div
-        v-if="isMenuOpen3"
+        v-if="menus.Menu3"
         class="absolute right-0 z-20 w-56 mt-2 overflow-hidden text-sm origin-top-right rounded-md shadow-lg bg-site-secondary"
       >
         <div
@@ -217,7 +218,7 @@
              <iframe  width="300" height="255" :src="cit.video_path" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
            </div>
          </div>
-         <span class="py-2 pr-2 transform rounded-r-full opener bg-site-secondary" style="font-size:30px;cursor:pointer" @click="openNav()"> <font-awesome-icon :icon="['fas', 'arrow-right']"/> </span>
+         <span class="py-4 pr-4 transform rounded-r-full opener bg-site-secondary" style="font-size:30px;cursor:pointer" @click="openNav()"> <font-awesome-icon :icon="['fas', 'arrow-right']"/> </span>
        </div>
         <Test :toggles="toggles" :center="cent" class="z-10"/>
       </div>
@@ -234,7 +235,7 @@
               <div class="h-1/2" > <img class="h-full px-2 bg-gray-200 rounded-md py-14 " src="https://ad-venture.org.uk/wp-content/uploads/2020/07/image-placeholder-1200x800-1.jpg"> </div>
                          <div class="h-1/2"> <img class="h-full px-2 bg-gray-200 rounded-md py-14 " src="https://ad-venture.org.uk/wp-content/uploads/2020/07/image-placeholder-1200x800-1.jpg"> </div>
           </div>
-     
+      
       </div>
        <div class="flex justify-center space-x-8">
                           <button @click="comm()" class="flex px-4 py-2 space-x-2 bg-gray-200 rounded-md ">
@@ -271,6 +272,10 @@ props: {
 cities: Array,
 dev: Array
 },
+mounted(){
+ 
+
+},
 methods: {
   res()
   {
@@ -297,12 +302,43 @@ methods: {
 
    
   },
+  menu1()
+  {
+    this.menus.Menu1 = !this.menus.Menu1
+    // this.toggles.at = !this.toggles.rt
+    // this.toggles.ct = !this.toggles.rt
+    this.$set(this.menus, 'Menu2' , false)
+    this.$set(this.menus, 'Menu3' , false)
+
+   
+  },
+  menu2()
+  {
+    this.menus.Menu2 = !this.menus.Menu2
+    // this.toggles.at = !this.toggles.rt
+    // this.toggles.ct = !this.toggles.rt
+    this.$set(this.menus, 'Menu1' , false)
+    this.$set(this.menus, 'Menu3' , false)
+
+   
+  },
+  menu3()
+  {
+    this.menus.Menu3 = !this.menus.Menu3
+    // this.toggles.at = !this.toggles.rt
+    // this.toggles.ct = !this.toggles.rt
+    this.$set(this.menus, 'Menu2' , false)
+    this.$set(this.menus, 'Menu1' , false)
+
+   
+  },
 cityCenter(param)
 { console.log(this.cent)
   this.$set(this.cent,0,param.latitude)
   this.$set(this.cent,1,param.longitude)
   this.$set(this.toggles, 'cap', true )
   console.log(this.cit)
+  console.log(param.id)
   
 }, openNav() {
   document.getElementById("mySidenav").style.width = "350px";
@@ -314,9 +350,11 @@ cityCenter(param)
 },
  data() {
     return {
-      isMenuOpen1:false,
-      isMenuOpen2:false,
-      isMenuOpen3:false,
+      menus: {
+       Menu1:false,
+      Menu2:false,
+      Menu3:false,
+      },
       currentLocation: {},
       toggles: 
       {
@@ -330,7 +368,7 @@ cityCenter(param)
         
        
       },
-      cent: [30.0074, 31.4913],
+      cent: [29.9871591, 31.7182112],
       cit: {}
      
     };

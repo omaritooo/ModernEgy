@@ -41,7 +41,7 @@
     
     
     <l-map 
-    
+        :minZoom="zoom"
         :zoom="zoom"
         :center="center"
         class="z-0"
@@ -77,19 +77,19 @@
 <l-popup > {{name}} </l-popup>
 </l-feature-group>
           
-          <l-geo-json @click="openPopUp(r7c, 'R7' )"  :geojson="r7" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
+          <l-geo-json @click="openPopUpG(r7c, 'r7' )"  :geojson="r7" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
 
           </l-geo-json>
-          <l-geo-json @click="openPopUp(r8c, 'R8')" :geojson="r8" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
+          <l-geo-json @click="openPopUpG(r8c, 'downtown')" :geojson="r8" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
             
           </l-geo-json>
         
-            <l-geo-json @click="openPopUpG(gvc, 'Gvt')" :geojson="govt" :options-style="{color: '#8AC9B2' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
+            <l-geo-json @click="openPopUpG(gvc, 'tr')" :geojson="govt" :options-style="{color: '#8AC9B2' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
             </l-geo-json>
-            <l-geo-json @click="openPopUp(mu23c, 'MU23')" :geojson="mu23" :options-style="{color: '#8AC9B2', weight: 0.1, fillOpacity:0.7 , opacity: 0.9 }">
+            <l-geo-json @click="openPopUpG(mu23c, 'mu23')" :geojson="mu23" :options-style="{color: '#8AC9B2', weight: 0.1, fillOpacity:0.7 , opacity: 0.9 }">
             
             </l-geo-json>
-            <l-geo-json @click="openPopUp(dtc, 'Downtown')"  :geojson="downtown" :options-style="{color: '#8AC9B2' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
+            <l-geo-json @click="openPopUpG(dtc, 'downtown')"  :geojson="downtown" :options-style="{color: '#8AC9B2' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
             </l-geo-json>
           
         
@@ -99,26 +99,26 @@
               <l-feature-group ref="features">
 <l-popup > <span> <Model/> {{name}}  </span></l-popup>
 </l-feature-group>
-             <l-geo-json @click="openPopUp(r7c, 'R7' )"  :geojson="r7" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
+             <l-geo-json @click="openPopUpG(r7c, 'r7' )"  :geojson="r7" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
 
           </l-geo-json>
-          <l-geo-json @click="openPopUp(r8c, 'R8')" :geojson="r8" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
+          <l-geo-json @click="openPopUpG(r8c, 'downtown')" :geojson="r8" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
             
           </l-geo-json>
         
-            <l-geo-json @click="openPopUpG(gvc, 'Gvt')" :geojson="govt" :options-style="{color: '#8AC9B2' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
+            <l-geo-json @click="openPopUpG(gvc, 'tr')" :geojson="govt" :options-style="{color: '#8AC9B2' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
             </l-geo-json>
-            <l-geo-json @click="openPopUp(mu23c, 'MU23')" :geojson="mu23" :options-style="{color: '#8AC9B2', weight: 0.1, fillOpacity:0.7 , opacity: 0.9 }">
+            <l-geo-json @click="openPopUpG(mu23c, 'mu23')" :geojson="mu23" :options-style="{color: '#8AC9B2', weight: 0.1, fillOpacity:0.7 , opacity: 0.9 }">
             
             </l-geo-json>
-            <l-geo-json @click="openPopUp(dtc, 'Downtown')"  :geojson="downtown" :options-style="{color: '#8AC9B2' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
+            <l-geo-json @click="openPopUpG(dtc, 'downtown')"  :geojson="downtown" :options-style="{color: '#8AC9B2' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
             </l-geo-json>
           </div>
           <div v-if="toggles.rt">
               <l-feature-group ref="features">
 <l-popup > <span> {{name}} </span></l-popup>
 </l-feature-group>
-            <l-geo-json @click="openPopUp(r7c, 'R7' )"  :geojson="r7" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
+            <l-geo-json @click="openPopUpG(r7c, 'r7' )"  :geojson="r7" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
 
           </l-geo-json>
           
@@ -135,9 +135,14 @@
   </div>
  </client-only>
  
- <div class="absolute top-0 left-0 z-40 w-1/2" v-if="toggle"  style=" background: transparent;">
-   <Model/>
- </div>
+ <transition name="slide-fade">
+   <div class="absolute top-0 left-0 z-40 w-full h-full p-6 " v-if="toggle" >
+     <div class="relative rounded-lg">
+       <Model :namer="name" class="rounded-lg"/>
+       <button class="absolute top-4 right-4" @click="toggle= !toggle"> <font-awesome-icon :icon="['fas', 'times']" size="lg" class="text-black"/></button>
+     </div>
+   </div>
+ </transition>
 </div>
 </template>
 
@@ -173,7 +178,7 @@ export default {
     return {
       geoj: {},
       mapT: false,
-      zoom: 16,
+      zoom: 12,
       r7: {},
       r8: {},
       govt: {},
@@ -254,7 +259,17 @@ export default {
 .fade-leave-active {
 	transition: opacity 1s ease-out;
 }
-
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+ {
+  transform: translateY(20px);
+  opacity: 0;
+}
 .fade-enter,
 .fade-leave-to {
 	opacity: 0;
