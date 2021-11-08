@@ -1,11 +1,17 @@
 <template>
- <div class="overflow-x-hidden">
-    <Header/>
-    <Partner/>
-    <ContactFrom/>
-    <Contactus/>
-    <Newsletter/>
+ <div class="overflow-x-hidden bg-site-primary">
+   <Tutorial id="header"  />
+    <Header :cities="cities" :dev="projects"/>
+          <Partner :partners="info"/>
+
+   
+    <ContactFrom id="contact"/>
+    <Contactus id="about"/>
+    <Newsletter id="newsfeed"/>
     <MapFooter/>
+     
+      
+    <Footer/>
   </div>
 </template>
 
@@ -16,8 +22,11 @@ import Newsletter from "~/components/Newsletter.vue"
 import Header from "~/components/Header.vue"
 import ContactFrom from "~/components/ContactForm.vue"
 import MapFooter from "~/components/MapFooter.vue"
-
+import Test from "~/components/Test.vue"
+import axios from "axios";
+const URL = 'https://modernegy.adgroup.tech/api/v1/cities';
 export default {
+  
   components:
   {
     Contactus,
@@ -25,8 +34,30 @@ export default {
     Newsletter,
     Header,
     ContactFrom,
-    MapFooter
+    MapFooter,
+    Test,
+    
 
+  },
+  data(){
+    return{
+      info: [],
+      cities: [],
+      projects: []
+      
+    }
+  },
+  props:
+  {
+    
+  },
+  mounted()
+  {
+    axios.get('https://modernegy.adgroup.tech/api/v1/partners').then( (response) => (this.info = response.data.data));
+    axios.get('https://modernegy.adgroup.tech/api/v1/cities').then( (response) => (this.cities = response.data.data));
+    axios.get('https://modernegy.adgroup.tech/api/v1/projects').then(response => (this.projects = response.data.data));
+    console.log(this.projects)
+    
   }
 }
   

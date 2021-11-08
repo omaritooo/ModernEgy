@@ -1,57 +1,88 @@
 <template>
-  <!-- <div class="bg-site-primary">
-    <Tutorial/>
-    <Nuxt />
-  </div> -->
-
-  <div class="">
-    <div class="relative inline-block text-left ">
-  <div >
-    <button type="button" class="inline-flex justify-center w-full px-10 py-2 text-sm font-medium text-white rounded-md shadow-sm bg-site-secondary hover:bg-gray-50 focus:outline-none " id="menu-button" aria-expanded="true" aria-haspopup="true">
-     {{Name}}
-      <!-- Heroicon name: solid/chevron-down -->
-      <svg class="w-5 h-5 ml-2 -mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-      </svg>
-    </button>
-  </div>
-
-  <!--
-    Dropdown menu, show/hide based on menu state.
-
-    Entering: "transition ease-out duration-100"
-      From: "transform opacity-0 scale-95"
-      To: "transform opacity-100 scale-100"
-    Leaving: "transition ease-in duration-75"
-      From: "transform opacity-100 scale-100"
-      To: "transform opacity-0 scale-95"
-  -->
-  <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg none ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-    <div class="hidden py-1 none" role="none">
-      <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-      <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
-      <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
-      <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
-      <form method="POST" action="#" role="none">
-        <button type="submit" class="block w-full px-4 py-2 text-sm text-left text-gray-700" role="menuitem" tabindex="-1" id="menu-item-3">
-          Sign out
+  <div
+    class="relative inline-block text-left text-white "
+   
+  >
+ 
+    <div>
+      <span class="rounded-md shadow-sm">
+        <button
+          @click="isMenuOpen = !isMenuOpen"
+          type="button"
+          class="inline-flex items-center justify-between w-full h-10 px-4 py-4 text-sm font-medium leading-5 text-gray-100 transition duration-150 ease-in-out border-none rounded-md bg-site-secondary focus:outline-none focus:border-blue-300 focus:shadow-outline-blue btn-focus"
+          id="options-menu"
+          aria-haspopup="true"
+          aria-expanded="true"
+        >
+          <span> {{ Name }} </span>
+          <img
+            src="https://s.svgbox.net/hero-solid.svg?ic=chevron-down&fill=grey-800"
+            class="w-5 h-5 ml-2 -mr-1"
+          />
         </button>
-      </form>
+      </span>
     </div>
-  </div>
-</div>  
+    <transition
+      enter-active-class="transition duration-100 ease-out"
+      enter-class="transform scale-95 opacity-0"
+      enter-to-class="transform scale-100 opacity-100"
+      leave-active-class="transition duration-75 ease-in"
+      leave-class="transform scale-100 opacity-100"
+      leave-to-class="transform scale-95 opacity-0"
+    >
+      <div
+        v-if="isMenuOpen"
+        class="absolute right-0 z-20 w-56 mt-2 overflow-hidden text-sm origin-top-right rounded-md shadow-lg bg-site-secondary"
+      >
+        <div
+          class="rounded-md shadow-xs bg-site-secondary"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="options-menu"
+        >
+          
+       
+          <div class="py-1" v-for="dev in devs " :key="dev.index">
+           
+ <nuxt-link  to="/" class="flex items-center p-4 space-x-2">
+              
+                {{dev.partner.company_name}} 
+            </nuxt-link>  
+           
+           
+            
+          </div>
+         
+        </div>
+      </div>
+    </transition>
+   
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    Name: String
+    Name: String,
+    devs: Array
+  },
+  data(){
+    return {
+      isMenuOpen: false,
+      dat: ['one', 'two', 'there']
+    }
   }
 
 }
 </script>
 
 <style>
-
+cart-enter-active, .cart-leave-active {
+  /* transition: opacity .5s; */
+  @apply transition ease-out duration-100;
+}
+.cart-enter, .cart-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  /* opacity: 0; */
+  @apply transform opacity-0 scale-95;
+}
 </style>

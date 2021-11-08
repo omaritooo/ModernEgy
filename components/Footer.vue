@@ -1,14 +1,14 @@
 <template>
-    <div>
+    <div data-aos="fade-left">
         <div class="px-10 bg-site-primary">
             <div class="flex p-10 justify-evenly ">
                 <div class="flex flex-col space-y-5">
                     <img src="../assets/logo.svg" alt="">
                     <div class="flex justify-around">
-                        <font-awesome-icon :icon="['fab', 'facebook']" class="text-white"/>
-                         <font-awesome-icon :icon="['fab', 'instagram']" class="text-white"/>
-                                                 <font-awesome-icon :icon="['fab', 'twitter']" class="text-white"/>
-                                                                         <font-awesome-icon :icon="['fab', 'whatsapp']" class="text-white"/>
+                        <font-awesome-icon  :icon="['fab', 'facebook']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
+                         <font-awesome-icon :icon="['fab', 'instagram']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
+                                                 <font-awesome-icon :icon="['fab', 'twitter']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
+                                                                         <font-awesome-icon :icon="['fab', 'whatsapp']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
 
 
 
@@ -16,11 +16,12 @@
                 </div>
                 <div class="flex flex-col text-white">
                     <h2 class="font-bold">Fast Links</h2>
-                    <div class="flex flex-col my-4 space-y-5">
-                        <a>Home</a>
-                        <a>About Us</a>
-                        <a>Contact Us</a>
-                        <a>News</a>
+                    <div class="flex flex-col my-4 space-y-5 font-thin text-gray-100">
+                        <nuxt-link to="#header">Home</nuxt-link>
+                        <nuxt-link to="#about">ِAbout Us</nuxt-link>
+                                                <nuxt-link to="#contact">Contact Us</nuxt-link>
+
+                        <nuxt-link to="#newsfeed">News</nuxt-link>
                     </div>
                 </div>
                 <div class="flex flex-col text-white ">

@@ -1,28 +1,46 @@
 <template>
-  <div class="w-full h-full">
+  <div class="w-full h-full" data-aos="fade-left">
     
-       <div class="pointer-events-none">
-         <GMap
-          :cluster="{options: {styles: clusterStyle}}"
-          :center="{lat: locations[0].lat, lng: locations[0].lng}"
-          :options="{fullscreenControl: false,  mapTypeControl: false, streetViewControl: false, mapTypeControl: false, zoomControl: false, scaleControl: false, gestureHandling: 'cooperative', styles: mapStyle}"
-          :zoom="15"
-               >
-          <GMapMarker
-            v-for="location in locations"
-            :key="location.id"
-            :position="{lat: location.lat, lng: location.lng}"
-            :options="{icon: location === currentLocation ? pins.selected : pins.notSelected}"
-            @click="currentLocation = location"
+       <div class="">
+        <no-ssr>
+  <div class="pointer-events-none" >
+    <l-map class="z-20"
+    :minZoom="zoom" :maxZoom="zoom"
+    
+        :zoom="zoom"
+        :center="center"
+        :options="{zoomControl: false}"
+        style="height: 400px; width: 100%"
+      >
+        <l-tile-layer
+          :url="url"
+          
+        />
+    
+     
+        <div class="relative z-10" >
+          <!-- <l-polygon  @click="mapT= !mapT" class="containo"
+            :lat-lngs="polygon.latlngs"
+            :color="polygon.color"
           >
-            <GMapInfoWindow>
-              <code>
-                lat: {{ location.lat }},
-                lng: {{ location.lng }}
-              </code>
-            </GMapInfoWindow>
-          </GMapMarker>
-               </GMap>
+         
+         
+           
+            
+            
+          </l-polygon>
+            <l-polyline :lat-lngs="polygon.latlngs">
+            
+          </l-polyline> -->
+        <l-marker :lat-lng="center" ></l-marker>
+        </div>
+    <l-footer disableScrollPropagation="true">
+
+    </l-footer>
+      </l-map>
+    
+  </div>
+ </no-ssr>
        </div>
   </div>
 </template>
@@ -31,6 +49,28 @@
 export default {
     data() {
     return {
+      json: {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#0fa5d7",
+        "marker-size": "medium",
+        "marker-symbol": "circle"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.0313,
+          31.6816
+        ]
+      }
+    }
+  ]
+},
+      zoom: 16,
+      center: [30.019617, 31.485779],
       currentLocation: {},
       locations: [
         {
@@ -60,7 +100,7 @@ export default {
           textColor: "#fff"
         }
       ],
-     
+     url: 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib21hcmFzaDI3IiwiYSI6ImNrdmNiOGZmYjRqYTQzMXF3Mzk0MXJjNTUifQ.qBSRkgV-kxRHHwr0ZuOchg',
     };
   },
 mounted()

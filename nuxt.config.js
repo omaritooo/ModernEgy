@@ -12,7 +12,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '../static/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
       { rel: 'icon', sizes: '32x32', href: '/favicon-32x32.png' },
       { rel: 'icon', sizes: '16x16', href: '/favicon-16x16.png' },
@@ -20,12 +20,31 @@ export default {
     ]
   },
 
+  router: {
+    scrollBehavior(to) {
+      if (to.hash) {
+        return window.scrollTo({
+          top: document.querySelector(to.hash).offsetTop,
+          behavior: 'smooth'
+        });
+      }
+      return window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    'aos/dist/aos.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: './plugins/vue-carousel.js', mode: 'client' },{ src: './plugins/vue-split.js', mode: 'client' }, ],
+  plugins: [{ src: './plugins/vue-carousel.js', mode: 'client' },
+  { src: './plugins/vue-split.js', mode: 'client' },
+  {src: './plugins/aos.js', mode: 'client'},
+  
+  
+  
+],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -44,6 +63,7 @@ export default {
       key: 'AIzaSyBGY9jeuPrJ0WdmEA_YWPoTOF5y86rdblo',
       
     }],
+    'nuxt-leaflet',
     '@nuxtjs/dotenv',
     '@nuxtjs/fontawesome',
     
@@ -60,7 +80,8 @@ export default {
         "faWhatsapp",
         "faPinterest",
         "faTelegramPlane"
-      ]
+      ],
+      solid: ['faArrowRight']
     }
   },
   

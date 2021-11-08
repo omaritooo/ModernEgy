@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-end el">
+  <div class="flex justify-end el" data-aos="fade-left">
       <div class="w-1/2 h-full ">
         <div class="float-left w-1/2 h-full px-24 py-32 text-6xl text-left text-white bg-white test texter">
             <div class="inline-block my-auto space-y-3 align-middle">
