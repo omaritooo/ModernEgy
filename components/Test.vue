@@ -56,9 +56,7 @@
        <l-geo-json :geojson="nc" :options-style="{color: '#D1CEEC',  weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
 
           </l-geo-json>
-    </div>
-         
-        <div class="relative z-10" v-if="toggles.at" >
+           <div class="relative z-10" v-if="toggles.at" >
           <!-- <l-polygon  @click="mapT= !mapT" class="containo"
             :lat-lngs="polygon.latlngs"
             :color="polygon.color"
@@ -80,11 +78,11 @@
           <l-geo-json @click="openPopUpG(r7c, 'r7' )"  :geojson="r7" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
 
           </l-geo-json>
-          <l-geo-json @click="openPopUpG(r8c, 'downtown')" :geojson="r8" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
+          <l-geo-json @click="openPopUpG(r8c, 'r8')" :geojson="r8" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
             
           </l-geo-json>
         
-            <l-geo-json @click="openPopUpG(gvc, 'tr')" :geojson="govt" :options-style="{color: '#8AC9B2' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
+            <l-geo-json @click="openPopUpG(gvc, 'gov')" :geojson="govt" :options-style="{color: '#8AC9B2' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
             </l-geo-json>
             <l-geo-json @click="openPopUpG(mu23c, 'mu23')" :geojson="mu23" :options-style="{color: '#8AC9B2', weight: 0.1, fillOpacity:0.7 , opacity: 0.9 }">
             
@@ -102,11 +100,11 @@
              <l-geo-json @click="openPopUpG(r7c, 'r7' )"  :geojson="r7" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
 
           </l-geo-json>
-          <l-geo-json @click="openPopUpG(r8c, 'downtown')" :geojson="r8" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
+          <l-geo-json @click="openPopUpG(r8c, 'r8')" :geojson="r8" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
             
           </l-geo-json>
         
-            <l-geo-json @click="openPopUpG(gvc, 'tr')" :geojson="govt" :options-style="{color: '#8AC9B2' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
+            <l-geo-json @click="openPopUpG(gvc, 'gov')" :geojson="govt" :options-style="{color: '#8AC9B2' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
             </l-geo-json>
             <l-geo-json @click="openPopUpG(mu23c, 'mu23')" :geojson="mu23" :options-style="{color: '#8AC9B2', weight: 0.1, fillOpacity:0.7 , opacity: 0.9 }">
             
@@ -114,17 +112,23 @@
             <l-geo-json @click="openPopUpG(dtc, 'downtown')"  :geojson="downtown" :options-style="{color: '#8AC9B2' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
             </l-geo-json>
           </div>
-          <div v-if="toggles.rt">
+          <div v-else-if="toggles.rt">
               <l-feature-group ref="features">
 <l-popup > <span> {{name}} </span></l-popup>
 </l-feature-group>
             <l-geo-json @click="openPopUpG(r7c, 'r7' )"  :geojson="r7" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
 
           </l-geo-json>
+          <l-geo-json @click="openPopUpG(r8c, 'r8' )"  :geojson="r8" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
+
+          </l-geo-json>
           
 
         
           </div>
+    </div>
+         
+       
     
       </l-map>
      <!-- <div id="mySidenav" class="z-50 sidenav">
@@ -138,7 +142,31 @@
  <transition name="slide-fade">
    <div class="absolute top-0 left-0 z-40 w-full h-full p-6 " v-if="toggle" >
      <div class="relative rounded-lg">
+       
        <Model :namer="name" class="rounded-lg"/>
+       <div class="absolute top-4 left-48 right-48">
+         <div class="flex">
+           <div class="text-lg">Projects:</div> <div class="flex flex-row text-lg " v-if="name == 'mu23' ">
+             <div class="" v-for="p in proj" :key="p.index" >
+               <div class="flex px-2 mx-2 space-x-3 text-white rounded-lg cursor-pointer clicker text-md bg-site-secondary" v-if="p.district.title == 'Mu 23'" >{{p.title}}</div>
+             </div>
+           </div>
+           <div class="flex flex-row text-lg " v-if="name == 'r7' ">
+             <div class="" v-for="p in proj" :key="p.index" >
+               <div class="flex px-2 mx-2 space-x-3 text-white rounded-lg clicker text-md bg-site-secondary" v-if="p.district.title == 'R7 District'" >
+                 <div v-if="p.title == 'The City'">
+                   <a href="http://compound.adgrouptech.com/">{{p.title}}</a>
+
+                 </div>
+                 <div v-else>
+                   {{p.title}}
+                 </div>
+                 </div>
+             </div>
+           </div>
+          
+         </div>
+       </div>
        <button class="absolute top-4 right-4" @click="toggle= !toggle"> <font-awesome-icon :icon="['fas', 'times']" size="lg" class="text-black"/></button>
      </div>
    </div>
@@ -172,7 +200,8 @@ export default {
   props:
   {
     toggles: Object,
-    center: Array
+    center: Array,
+    proj: Array
   },
     data() {
     return {
@@ -311,6 +340,25 @@ export default {
 
 .sidenav a:hover {
   color: #f1f1f1;
+}
+.clicker{
+transition-duration: 0.5s;
+transition: ease-in-out;
+
+}
+
+
+.clicker:hover{
+    background: rgb(236,219,183);
+background: linear-gradient(90deg, rgba(236,219,183,1) 0%, rgba(227,186,100,1) 100%);
+color: black;
+
+}
+.clicker:focus{
+    background: rgb(236,219,183);
+background: linear-gradient(90deg, rgba(236,219,183,1) 0%, rgba(227,186,100,1) 100%);
+color: black;
+
 }
 
 .sidenav .closebtn {

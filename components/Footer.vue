@@ -4,13 +4,13 @@
             <div class="flex p-10 justify-evenly ">
                 <div class="flex flex-col space-y-5">
                     <img src="../assets/logo.svg" alt="">
-                    <div class="flex justify-around">
+                    <div class="flex justify-around space-x-2">
                         <font-awesome-icon  :icon="['fab', 'facebook']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
                          <font-awesome-icon :icon="['fab', 'instagram']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
                                                  <font-awesome-icon :icon="['fab', 'twitter']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
                                                                          <font-awesome-icon :icon="['fab', 'whatsapp']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
 
-
+               
 
                     </div>
                 </div>
@@ -59,8 +59,19 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-
+    computed: {
+        test(){
+            return this.$store.getters.myGetter
+        },
+        use(){
+            return this.$store.state.data
+        }
+    },
+    mounted() {
+    this.$store.dispatch("getData");
+  }
 }
 </script>
 

@@ -36,7 +36,7 @@ export default {
   css: [
     'aos/dist/aos.css'
   ],
-
+  
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [{ src: './plugins/vue-carousel.js', mode: 'client' },
   { src: './plugins/vue-split.js', mode: 'client' },
@@ -45,7 +45,7 @@ export default {
   
   
 ],
-
+  // loading: '~/components/Loading.vue',
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 

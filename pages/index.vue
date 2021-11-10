@@ -1,5 +1,6 @@
 <template>
- <div class="overflow-x-hidden bg-site-primary">
+ <div v-if="!loading" class="overflow-x-hidden bg-site-primary">
+  
    <Tutorial id="header"  />
     <Header :cities="cities" :dev="projects"/>
     <Partner :partners="info"/>
@@ -26,7 +27,7 @@ import Test from "~/components/Test.vue"
 import axios from "axios";
 const URL = 'https://modernegy.adgroup.tech/api/v1/cities';
 export default {
-  
+  loading: true,
   components:
   {
     Contactus,
@@ -57,7 +58,10 @@ export default {
     axios.get('https://modernegy.adgroup.tech/api/v1/cities').then( (response) => (this.cities = response.data.data));
     axios.get('https://modernegy.adgroup.tech/api/v1/projects').then(response => (this.projects = response.data.data));
     console.log(this.projects)
-    
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      setTimeout(() => this.$nuxt.$loading.finish(), 4000)
+    })
   }
 }
   
