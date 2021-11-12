@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <h1>Loading</h1>
+  <div
+    class="fixed top-0 left-0 flex items-center justify-center w-screen h-screen bg-white"
+    style="z-index: 999"
+  >
+    <slot></slot>
   </div>
 </template>
 <script>

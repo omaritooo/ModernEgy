@@ -1,6 +1,14 @@
 <template>
- <div v-if="!loading" class="overflow-x-hidden bg-site-primary">
-  
+ <div  class="overflow-x-hidden bg-site-primary">
+   
+      <transition name="fade-loader">
+      <Loading v-if="this.$store.state.loading">
+       <div class="flex flex-col w-1/2 mx-auto" ><img class="" src="../assets/MODERN_EGY_LOGO.gif" alt="">
+    <span class="mx-auto text-3xl font-thin text-center text-white">ModernEgy</span>
+    </div>
+      </Loading>
+    </transition>
+    
    <Tutorial id="header"  />
     <Header :cities="cities" :dev="projects"/>
     <Partner :partners="info"/>
@@ -24,6 +32,7 @@ import Header from "~/components/Header.vue"
 import ContactFrom from "~/components/ContactForm.vue"
 import MapFooter from "~/components/MapFooter.vue"
 import Test from "~/components/Test.vue"
+import Loading from "~/components/Loading.vue"
 import axios from "axios";
 const URL = 'https://modernegy.adgroup.tech/api/v1/cities';
 export default {
@@ -37,6 +46,7 @@ export default {
     ContactFrom,
     MapFooter,
     Test,
+    Loading
     
 
   },
@@ -58,10 +68,11 @@ export default {
     axios.get('https://modernegy.adgroup.tech/api/v1/cities').then( (response) => (this.cities = response.data.data));
     axios.get('https://modernegy.adgroup.tech/api/v1/projects').then(response => (this.projects = response.data.data));
     console.log(this.projects)
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start()
-      setTimeout(() => this.$nuxt.$loading.finish(), 4000)
-    })
+    // this.$nextTick(() => {
+    //   this.$nuxt.$loading.start()
+    //   setTimeout(() => this.$nuxt.$loading.finish(), 4000)
+    // })
+    this.$store.commit("loaderOFF")
   }
 }
   
@@ -72,6 +83,28 @@ export default {
 {
     font-family: "Poppins", sans-serif;
 
+}
+.fade-loader-leave-active {
+  @apply duration-5000 transition;
+}
+
+.fade-loader-enter-active {
+  @apply duration-7000 transition;
+  @apply delay-1000 transition;
+}
+
+.fade-loader-enter {
+  @apply opacity-0;
+}
+.fade-loader-enter-to {
+ 
+  @apply opacity-100;
+}
+
+.fade-loader-leave-to {
+
+  @apply opacity-0;
+  
 }
 </style>
 

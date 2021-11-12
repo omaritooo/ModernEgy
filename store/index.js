@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
  export const state = () => ({
     data: [],
     form: {
@@ -8,9 +8,11 @@ phone: '',
 note: ''
 
     },
-    id: '',
+    loading: true,
+    id: '24',
     city: [],
-    url: 'https://modernegy.adgroup.tech/api/v1/cities/'
+    url: 'https://modernegy.adgroup.tech/api/v1/cities/',
+    center: [29.9871591, 31.7182112]
   })
   
 
@@ -21,10 +23,10 @@ note: ''
        });
 
     },
-    getCity({commit, getters}){
+    getCity({commit}, payload){
         console.log(getters.getID)
         
-        axios.get(`https://modernegy.adgroup.tech/api/v1/cities/${getters.getID}`).then(response => {
+        axios.get(`https://modernegy.adgroup.tech/api/v1/cities/of/${payload}`).then(response => {
             commit('SET_CITY', response.data.data)
             
        });
@@ -39,17 +41,25 @@ note: ''
     SET_DATA(state, data){
       state.data = data;
     },
+    loaderON(state){
+      state.loading = true;
+    },
+    loaderOFF(state){
+      state.loading = false;
+    },
     SET_CITY(state, city){
         state.city = city;
     },
  
-   async SET_ID(state, id)
+    SET_ID(state, id)
     {
         state.id = id;
     },
-    SET_URL(state, id, url){
-        
+    SET_CENTER(state, center)
+    {
+      state.center = center;
     }
+    
   }
   
   export const getters = {
@@ -63,7 +73,10 @@ note: ''
       },
      getID(state){
         
-        return state.id}
+        return state.id},
+        getCenter(state)
+        {return state.center;
+        }
   }
 
 

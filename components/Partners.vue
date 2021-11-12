@@ -2,19 +2,20 @@
   <div class="flex flex-col justify-center pt-10 bg-gray-100" >
       <h1 class="py-10 text-3xl text-center">
           Our Partners
+      
       </h1>
        <div class="flex flex-col justify-center p-4">
            <client-only>
-                 <div class="w-1/3 mx-auto ">
-              <carousel :scrollPerPage="false" paginationEnabled="false" autoplay="true" perPage="3" autoplayHoverPause="true" paginationSize="0" loop="true">
-                  <slide v-for="part in partners" :key="part.index">
-                     <!-- {{part.company_name}} -->
-                     <div v-if="part.image_path"><img :src="part.image_path" alt=""></div>
-                  </slide> 
-                  
-           
-           
-              </carousel>
+                 <div v-for="part in partner" class="w-1/3 mx-auto ">
+              <div v-for="pa in part.district">
+
+                <carousel :scrollPerPage="false" paginationEnabled="false" autoplay="true" perPage="1" autoplayHoverPause="true" paginationSize="0" loop="true">
+                    <slide v-for="proj in pa.project" >
+                      <div v-if="proj.partner.image_path"><img :src="proj.partner.image_path"></div>
+                    </slide>
+                
+                </carousel>
+              </div>
                  </div>
                
                  
@@ -91,11 +92,7 @@ company: ''
         dataa.append("company_name", this.form.company);
 
 
-    // let config = {
-    //   header: {
-    //     "Content-Type": "multipart/form-data;",
-    //   },
-    // };
+   
     axios.post("https://modernegy.adgroup.tech/api/v1/partners", dataa).then((res) => console.log(res))
       .catch((err) => console.log(err));
       console.log(dataa)
@@ -104,9 +101,19 @@ company: ''
       this.form.phone = ''
       this.form.message = ''
       this.form.company = ''
-          }
+          },
+         
          
         },
+        mounted() {
+          this.$store.dispatch("getData");
+        },
+        computed: {
+ partner(){
+            return this.$store.state.data;
+          },
+         
+        }
     }
 
       

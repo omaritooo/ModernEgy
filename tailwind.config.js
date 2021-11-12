@@ -731,6 +731,9 @@ module.exports = {
       500: '500ms',
       700: '700ms',
       1000: '1000ms',
+      3000: '3000ms',
+      5000: '5000ms',
+     7000: '7000ms',
     },
     transitionProperty: {
       none: 'none',
@@ -809,6 +812,9 @@ module.exports = {
       30: '30',
       40: '40',
       50: '50',
+      80: '80',
+      70: '70',
+      60: '60',
     },
   },
   variantOrder: [

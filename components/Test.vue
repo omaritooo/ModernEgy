@@ -6,44 +6,13 @@
  <client-only>
    
   <div class="relative" >
-    <!-- <div class="fixed inset-0 z-40 flex">
-			
-			<div
-				class="absolute top-0 z-20 flex h-screen"
-				:class="[right ? 'right-0 flex-row' : 'left-0 flex-row-reverse']"
-			>
-				
-				<button
-					@click.prevent="toggler()"
-					class="w-12 h-48 p-1 my-auto text-center text-white duration-300 bg-gray-600 rounded focus:outline-none hover:bg-gray-500 transition-color"
-				>
-					<span
-						:class="[right ? '-rotate-90' : 'rotate-90']"
-						class="block font-bold origin-center transform"
-					>
-						Drawer
-					</span>
-				</button>
-
-			
-				<div
-					ref="content"
-					class="flex items-center justify-center overflow-hidden transition-all duration-700 bg-yellow-200"
-					:class="[open ? 'max-w-lg' : 'max-w-0']"
-				>
-					<div class="w-48 text-xl font-bold text-center">Sidebar</div>
-					<slot></slot>
-				</div>
-			</div>
-
-		
-		</div> -->
+   
     
     
     <l-map 
         :minZoom="zoom"
         :zoom="zoom"
-        :center="center"
+        :center="this.$store.state.center"
         class="z-0"
         style="height: 700px; width: 100%"
       >
@@ -57,19 +26,7 @@
 
           </l-geo-json>
            <div class="relative z-10" v-if="toggles.at" >
-          <!-- <l-polygon  @click="mapT= !mapT" class="containo"
-            :lat-lngs="polygon.latlngs"
-            :color="polygon.color"
-          >
-         
-         
-          
-            
-            
-          </l-polygon>
-            <l-polyline :lat-lngs="polygon.latlngs">
-            
-          </l-polyline> -->
+        
          
           <l-feature-group ref="features">
 <l-popup > {{name}} </l-popup>
@@ -175,18 +132,8 @@
 </template>
 
 <script>
-// import {
-//   LMap,
-//   LTileLayer,
-//   LCircle,
-//   LRectangle,
-//   LPolygon,
-//   LPolyline,
-//   LPopup,
-//   LTooltip,
-// } from "vue2-leaflet";
-// import { latLng } from "leaflet";
-  import Model from "../components/Model.vue"
+
+import Model from "../components/Model.vue"
 import axios from "axios";
 
   import { ModelObj } from "vue-3d-model";
@@ -224,8 +171,8 @@ export default {
 
       // center: [30.0313, 31.6816],
      
-      
-      url: 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib21hcmFzaDI3IiwiYSI6ImNrdmNiOGZmYjRqYTQzMXF3Mzk0MXJjNTUifQ.qBSRkgV-kxRHHwr0ZuOchg',
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      // url: 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib21hcmFzaDI3IiwiYSI6ImNrdmNiOGZmYjRqYTQzMXF3Mzk0MXJjNTUifQ.qBSRkgV-kxRHHwr0ZuOchg',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
         

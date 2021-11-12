@@ -1,10 +1,10 @@
 <template>
     <div data-aos="fade-left">
         <div class="px-10 bg-site-primary">
-            <div class="flex p-10 justify-evenly ">
-                <div class="flex flex-col space-y-5">
-                    <img src="../assets/logo.svg" alt="">
-                    <div class="flex justify-around space-x-2">
+            <div class="flex flex-col p-4 space-y-2 md:p-10 md:flex-row justify-evenly ">
+                <div class="flex flex-col space-y-2 md:space-y-5">
+                    <div class="flex justify-center"><img class="w-1/3 md:w-1/2" src="../assets/logo.svg" alt=""></div>
+                    <div class="flex justify-around space-x-2 text-md ">
                         <font-awesome-icon  :icon="['fab', 'facebook']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
                          <font-awesome-icon :icon="['fab', 'instagram']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
                                                  <font-awesome-icon :icon="['fab', 'twitter']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
@@ -43,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex p-4 font-thin text-white bg-gray-600 justify-evenly text-md">
+        <div class="flex flex-col justify-center p-4 space-y-2 font-thin text-center text-white bg-gray-600 md:flex-row md:justify-evenly md:text-md">
 <div >
     ™(Ad Group Co.)  All Rights Reserved.
 </div>

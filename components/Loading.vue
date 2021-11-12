@@ -1,9 +1,17 @@
 <template>
-  <div v-if="loading" class="flex justify-center bg-site-primary loading-page">
+  <!-- <div v-if="loading" class="flex justify-center bg-site-primary loading-page">
     <div class="flex flex-col w-1/2 mx-auto" ><img class="" src="../assets/MODERN_EGY_LOGO.gif" alt="">
     <span class="mx-auto text-3xl font-thin text-center text-white">ModernEgy</span>
     </div>
+  </div> -->
+
+  <div
+    class="fixed top-0 left-0 flex items-center justify-center w-screen h-screen bg-site-primary"
+    style="z-index: 999"
+  >
+    <slot></slot>
   </div>
+
 </template>
 <script>
   export default {
