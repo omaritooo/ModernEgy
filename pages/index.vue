@@ -10,8 +10,8 @@
     </transition>
     
    <Tutorial id="header"  />
-    <Header :cities="cities" :dev="projects"/>
-    <Partner :partners="info"/>
+    <Header />
+    <Partner />
 
    
     <ContactFrom id="contact"/>
@@ -52,9 +52,7 @@ export default {
   },
   data(){
     return{
-      info: [],
-      cities: [],
-      projects: []
+     
       
     }
   },
@@ -64,14 +62,7 @@ export default {
   },
   mounted()
   {
-    axios.get('https://modernegy.adgroup.tech/api/v1/partners').then( (response) => (this.info = response.data.data));
-    axios.get('https://modernegy.adgroup.tech/api/v1/cities').then( (response) => (this.cities = response.data.data));
-    axios.get('https://modernegy.adgroup.tech/api/v1/projects').then(response => (this.projects = response.data.data));
-    console.log(this.projects)
-    // this.$nextTick(() => {
-    //   this.$nuxt.$loading.start()
-    //   setTimeout(() => this.$nuxt.$loading.finish(), 4000)
-    // })
+   
     this.$store.commit("loaderOFF")
   }
 }

@@ -103,9 +103,16 @@
        <Model :namer="name" class="rounded-lg"/>
        <div class="absolute top-4 left-48 right-48">
          <div class="flex">
-           <div class="text-lg">Projects:</div> <div class="flex flex-row text-lg " v-if="name == 'mu23' ">
-             <div class="" v-for="p in proj" :key="p.index" >
-               <div class="flex px-2 mx-2 space-x-3 text-white rounded-lg cursor-pointer clicker text-md bg-site-secondary" v-if="p.district.title == 'Mu 23'" >{{p.title}}</div>
+           <div class="text-lg">Projects:</div> 
+           <!-- <div class="flex flex-row text-lg " >
+             <div class="" v-for="p in project" :key="p.index" >
+               <div v-for="district in p.district" :key="district.index">
+                 <div v-if="district.title == 'Mu 23'">
+                   <div v-for="proj in district.project" :key="proj.index">
+                     {{proj.title}}
+                     </div>
+                 </div>
+                 </div>
              </div>
            </div>
            <div class="flex flex-row text-lg " v-if="name == 'r7' ">
@@ -121,7 +128,31 @@
                  </div>
              </div>
            </div>
-          
+           -->
+           <div class="flex flex-row text-lg">
+             <div class="" v-for="data in project" :key="data.index" >
+               <div v-for="dist in data.district" :key="dist.index" class="flex px-2 mx-2 space-x-3 text-white rounded-lg clicker text-md bg-site-secondary"  >
+                 <div v-if="dist.title == 'R7 District'">
+
+                   <div v-for="proje in dist.project" :key="proje.index">
+                   
+                     <div v-if="name == 'r7'"><a href="http://compound.adgrouptech.com/">{{proje.title}}</a></div>
+                   
+                   </div>
+                 </div>
+                 <div v-if="name == 'mu23'" class="flex">
+                   <div v-if="dist.title == 'Mu 23'" class="flex space-x-2">
+                     <div v-for="proje in dist.project" :key="proje.index" class="flex flex-row space-x-2">
+                   
+                       <div class="">{{proje.title}}</div>
+                   
+                     </div>
+                   </div>
+                 </div>
+                
+                 </div>
+             </div>
+             </div>
          </div>
        </div>
        <button class="absolute top-4 right-4" @click="toggle= !toggle"> <font-awesome-icon :icon="['fas', 'times']" size="lg" class="text-black"/></button>
@@ -147,8 +178,7 @@ export default {
   props:
   {
     toggles: Object,
-    center: Array,
-    proj: Array
+  
   },
     data() {
     return {
@@ -185,7 +215,7 @@ export default {
         axios.get('/downtown.geojson').then( response => this.downtown = response.data)
         axios.get('/mu23.geojson').then( response => this.mu23 = response.data)
          axios.get('/newcapital.geojson').then( response => this.nc = response.data)
-
+        this.$store.commit("getData")
         // axios.get('/test1.geojson').then( response => this.tester1 = response.data)
   },
  methods: {
@@ -226,6 +256,10 @@ export default {
         };
       };
     },
+    project()
+    {
+      return this.$store.getters.myGetter
+    }
   }
 };
 </script>

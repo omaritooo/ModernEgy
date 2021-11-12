@@ -2,7 +2,7 @@
   <div class="w-full h-full" data-aos="fade-left">
     
        <div class="">
-        <no-ssr>
+        <client-only>
   <div class="pointer-events-none" >
     <l-map class="z-20"
     :minZoom="zoom" :maxZoom="zoom"
@@ -34,13 +34,11 @@
           </l-polyline> -->
         <l-marker :lat-lng="center" ></l-marker>
         </div>
-    <l-footer disableScrollPropagation="true">
-
-    </l-footer>
+   
       </l-map>
     
   </div>
- </no-ssr>
+ </client-only>
        </div>
   </div>
 </template>

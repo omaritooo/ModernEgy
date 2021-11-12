@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'ModEgy',
+    title: 'Modern Egy',
     htmlAttrs: {
       lang: 'en'
     },
@@ -59,10 +59,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    ['nuxt-gmaps', {
-      key: 'AIzaSyBGY9jeuPrJ0WdmEA_YWPoTOF5y86rdblo',
-      
-    }],
+    'nuxt-lazy-load',
     'nuxt-leaflet',
     '@nuxtjs/dotenv',
     '@nuxtjs/fontawesome',

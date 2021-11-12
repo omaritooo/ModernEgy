@@ -6,16 +6,14 @@
       </h1>
        <div class="flex flex-col justify-center p-4">
            <client-only>
-                 <div v-for="part in partner" class="w-1/3 mx-auto ">
-              <div v-for="pa in part.district">
+                 <div v-for="part in partner" class="w-1/3 mx-auto " :key="part.index">
 
-                <carousel :scrollPerPage="false" paginationEnabled="false" autoplay="true" perPage="1" autoplayHoverPause="true" paginationSize="0" loop="true">
-                    <slide v-for="proj in pa.project" >
+                <carousel :scrollPerPage="false" paginationEnabled="false" autoplay="true" perPage="1" autoplayHoverPause="true" paginationSize="0" loop="true" v-for="pa in part.district" :key="pa.index">
+                    <slide v-for="proj in pa.project" :key="proj.index">
                       <div v-if="proj.partner.image_path"><img :src="proj.partner.image_path"></div>
                     </slide>
                 
                 </carousel>
-              </div>
                  </div>
                
                  
@@ -79,7 +77,6 @@ company: ''
       props:
       {
          
-          partners: Object,
       },
      
       methods: {

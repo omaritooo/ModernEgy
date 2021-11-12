@@ -9,7 +9,7 @@
               </div>
               <hr class="text-gray-100" >
               <div class="flex flex-col py-4 space-y-5 text-left" v-for="ci in cit" :key="ci.index">
-                  <button @click="cityCenter(ci)" class="px-4 py-2 text-left clicker "  :class="{'active' : ci.id == 24}">
+                  <button @click="cityCenter(ci)" class="px-4 py-2 text-left clicker " :ref="`b-${ci.id}`" :class="{'active' : ci.id == 24}">
                       <!-- NEW Capital --> {{ci.title}}
                       
 
@@ -198,8 +198,9 @@
                            
                  <div v-for="district in set.district" :key="district.id">
                     
-                   <div v-for="partner in district.project" :key="partner.id" class="flex items-center p-4 space-x-2" v-if="partner.type == 'residential' || partner.type == 'commercial and residential'">
-                     <div >
+                   <div v-for="partner in district.project" :key="partner.id" class="flex items-center p-4 space-x-2" >
+
+                     <div v-if="partner.type == 'residential' || partner.type == 'commercial and residential'" >
                         {{partner.title}}
                      </div>
                   
@@ -222,7 +223,7 @@
 
          <div id="mySidenav" class=" sidenav">
   <a href="javascript:void(0)" class="closebtn" @click="closeNav()">&times;</a>
-  <div v-for="set in setter">
+  <div v-for="set in setter" :key="set.id">
     <h2 class="text-lg text-center text-white">
       {{set.title}}
     </h2>
@@ -234,7 +235,7 @@
 
 <span class="absolute p-4 bg-gray-800 rounded-r-full z-70 top-72" style="font-size:30px;cursor:pointer" @click="openNav()"> <font-awesome-icon :icon="['fas', 'arrow-right']"/> </span>
   </div>
-            <Test :center="cent" :toggles="toggles" :proj="nc"/>
+            <Test :toggles="toggles" />
           </div>
          <div class="w-1/4 h-full my-auto space-y-10">
             <div class="flex flex-col justify-end w-full h-1/2 " v-for="ad in ads" :key="ad.index">
@@ -278,15 +279,16 @@ components:
     side
 },
 props: {
-cities: Array,
-dev: Array
+
 },
 mounted(){
-           console.log(this.$refs['b24'])
+           console.log(this.$refs['b-24'])
+
     this.$store.dispatch('getID')
       axios.get('https://modernegy.adgroup.tech/api/v1/advertisement').then( (response) => (this.ads = response.data.data));
 this.$nextTick(() => {
           console.log(this.$refs['b24'])
+
           
       });
        axios.get('https://modernegy.adgroup.tech/api/v1/projects').then( (response) => (this.nc = response.data.data));
