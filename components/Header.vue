@@ -2,18 +2,24 @@
  
   <div class="z-30 flex flex-col px-32 py-10 mb-16 overflow-hidden">
       <div class="flex justify-center h-full my-2" style="height: fit-content"  >
-          <div class="text-white bg-site-secondary rounded-t-md ">
+          <div class="text-white h-inherit bg-site-secondary rounded-t-md ">
               <div class="px-10 py-2 text-center ">
                   Districts
                   
               </div>
               <hr class="text-gray-100" >
-              <div class="flex flex-col py-4 space-y-5 text-left" v-for="ci in cit" :key="ci.index">
-                  <button @click="cityCenter(ci)" class="px-4 py-2 text-left clicker " :ref="`b-${ci.id}`" :class="{'active' : ci.id == 24}">
-                      <!-- NEW Capital --> {{ci.title}}
+              <div class="flex flex-col py-4 space-y-5 text-left" >
+                  <button @click="cityCenter(capital)" class="px-4 py-2 text-left clicker " ref="b1" >
+                      New Capital
                       
 
                   </button>
+                  <div v-for="ci in cit.slice(1)" :key="ci.index">
+                    <button @click="cityCenter(ci)" class="px-4 py-2 text-left clicker " :ref="`b-${ci.id}`" :class="{'active' : ci.id == 24}">
+                        <!-- NEW Capital --> {{ci.title}}
+                    
+                    </button>
+                  </div>
                   
               </div>
           </div>
@@ -152,7 +158,7 @@
                    
                   </div>
                           <div
-                    class="relative z-50 inline-block text-left text-white"
+                    class="relative z-50 inline-block text-left text-white rounded-lg shadow-lg"
                    
                   >
                  
@@ -198,10 +204,11 @@
                            
                  <div v-for="district in set.district" :key="district.id">
                     
-                   <div v-for="partner in district.project" :key="partner.id" class="flex items-center p-4 space-x-2" >
+                   <div v-for="partner in district.project" :key="partner.id" >
 
-                     <div v-if="partner.type == 'residential' || partner.type == 'commercial and residential'" >
-                        {{partner.title}}
+                     <div v-if="partner.type !== 'commercial'"  class="flex items-center p-4 space-x-2" >
+                       {{partner.title}}
+                        <!-- <div v-if="partner.title">{{partner.title}}</div> -->
                      </div>
                   
                 </div>
@@ -219,7 +226,7 @@
               </div>
   <!-- End Dropdown -->
             </div>
-            <div class="absolute py-2 z-60 top-52">
+            <div class="absolute py-2 z-60 top-48">
 
          <div id="mySidenav" class=" sidenav">
   <a href="javascript:void(0)" class="closebtn" @click="closeNav()">&times;</a>
@@ -227,20 +234,24 @@
     <h2 class="text-lg text-center text-white">
       {{set.title}}
     </h2>
-    <img :src="set.image_path">
-    <!-- <iframe width="200" height="255" src="https://www.youtube.com/embed/3snAHmDJm84" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+
+    <div v-if="testtog" class="flex mx-2 mt-4 "><iframe id="ifram" class="border-2 border-gray-200 rounded-lg" width="360" height="260" :src="set.video_path" :title="set.title" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    <p class="p-4 font-thin text-white ">
+{{set.description}}
+
+    </p>
   </div>
 </div>
   
 
 <span class="absolute p-4 bg-gray-800 rounded-r-full z-70 top-72" style="font-size:30px;cursor:pointer" @click="openNav()"> <font-awesome-icon :icon="['fas', 'arrow-right']"/> </span>
   </div>
-            <Test :toggles="toggles" />
+            <Test class="" :toggles="toggles" />
           </div>
-         <div class="w-1/4 h-full my-auto space-y-10">
-            <div class="flex flex-col justify-end w-full h-1/2 " v-for="ad in ads" :key="ad.index">
-              <div class="rounded-lg " v-if="ad.status == 'active'">
-                  <img  class="px-2 py-4 bg-gray-200 rounded-lg" :src="ad.image_path" alt="">
+         <div style="" class="w-1/3 ">
+            <div class="flex flex-col justify-between w-3/4 space-y-5 " v-for="ad in ads" :key="ad.index">
+              <div class="flex flex-col justify-around space-y-5 rounded-lg" v-if="ad.status == 'active'">
+                  <div class="flex flex-col mb-4 space-y-5 justify-evenly"><img  class="px-4 py-6 bg-gray-200 rounded-lg" :src="ad.image_path" alt=""></div>
               </div>
             </div>
           </div>
@@ -279,20 +290,24 @@ components:
     side
 },
 props: {
+  
+},
+
+created(){
 
 },
 mounted(){
-           console.log(this.$refs['b-24'])
-
+      this.$refs['b1'].click()
+       this.$refs['b1'].focus()
     this.$store.dispatch('getID')
-      axios.get('https://modernegy.adgroup.tech/api/v1/advertisement').then( (response) => (this.ads = response.data.data));
-this.$nextTick(() => {
-          console.log(this.$refs['b24'])
+    // this.cityCenter(this.capital)
+     this.$store.dispatch("getData");
 
-          
-      });
+      axios.get('https://modernegy.adgroup.tech/api/v1/advertisement').then( (response) => (this.ads = response.data.data));
+
+            
+
        axios.get('https://modernegy.adgroup.tech/api/v1/projects').then( (response) => (this.nc = response.data.data));
-    this.$store.dispatch("getData");
 },
 methods: {
  
@@ -306,10 +321,7 @@ methods: {
 
    
   },
-  setFocus() {
-    // I can access the DOM object directly here without any query.
-    this.$refs.focusableDiv.focus()
-  },
+  
    comm()
   {
     this.toggles.ct = !this.toggles.ct
@@ -361,7 +373,6 @@ cityCenter(param)
   this.$set(this.cent,1,param.longitude)
   this.$store.commit('SET_ID', param.id)
   this.$store.commit('SET_CENTER', [param.latitude, param.longitude])
-this.$set(this.toggles, 'cap', true )
     console.log(this.$store.state.center)
   console.log(this.$store.state.id)
       this.$store.dispatch("getCity", this.$store.state.id)
@@ -369,17 +380,20 @@ this.$set(this.toggles, 'cap', true )
   
 }, openNav() {
   document.getElementById("mySidenav").style.width = "350px";
+  this.testtog = !this.testtog
 },
 
  closeNav() {
   document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("ifram")
+  this.testtog = !this.testtog
 }
 },
 
 computed: {
-cit() {
-  return this.$store.getters.myGetter
-},
+ cit() {
+   return this.$store.state.data
+ },
 
  iden()
   {
@@ -395,6 +409,22 @@ watch: {
  data() {
     return {
       nc: [],
+      testtog: false,
+      capital: 
+      {
+        "id": 24,
+            "title": "New Capital",
+            "longitude": "31.7182112",
+            "latitude": "29.9871591",
+            "deleted_at": null,
+            "created_at": "2021-11-07T05:56:36.000000Z",
+            "updated_at": "2021-11-07T05:56:36.000000Z",
+            "image_path": "https://modernegy.adgroup.tech/partners/cities/49f107acfbc3cdc1bfda3a48352448a81636264596.png",
+            "video_path": "https://www.youtube.com/watch?v=jujW0w-i_6Q",
+                        "description": null,
+
+
+      },
       ads: [],
       menus: {
        Menu1:false,
@@ -442,12 +472,14 @@ transition: ease-in-out;
     background: rgb(236,219,183);
 background: linear-gradient(90deg, rgba(236,219,183,1) 0%, rgba(227,186,100,1) 100%);
 color: black;
+outline: none;
 
 }
 .clicker:focus{
     background: rgb(236,219,183);
 background: linear-gradient(90deg, rgba(236,219,183,1) 0%, rgba(227,186,100,1) 100%);
 color: black;
+outline: none;
 
 }
  .height-adjuster 
@@ -456,11 +488,11 @@ color: black;
 
 }
 .sidenav {
-  height: 700px;
+  height: 60vh;
   width: 0;
   position: absolute;
-  z-index: 5000;
-  top: 300;
+  z-index: 200;
+  top: 400;
   
   background-color: #4B618F;
   overflow-x: hidden;
@@ -484,7 +516,7 @@ color: black;
 
 .sidenav .closebtn {
   position: absolute;
-  top: 50%;
+  top: 0;
   right: 0;
   font-size: 36px;
   margin-left: 50px;

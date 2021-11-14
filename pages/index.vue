@@ -10,7 +10,7 @@
     </transition>
     
    <Tutorial id="header"  />
-    <Header />
+    <Header :cit="distro" />
     <Partner />
 
    
@@ -62,8 +62,15 @@ export default {
   },
   mounted()
   {
-   
+           this.$store.commit("getData")
+
     this.$store.commit("loaderOFF")
+  },
+  computed: {
+    distro()
+    {
+      return this.$store.state.data
+    }
   }
 }
   

@@ -1,22 +1,22 @@
 <template>
-  <div class="bg-white" style="">
+  <div class="w-full h-full grounder" style="">
     <client-only>
-      <div v-if="namer == 'r7'">
+      <div >
         
           <div  class="">
             
-            <ModelGltf  :rotation="rotation"  class="rounded-full" backgroundAlpha="0"
+            <ModelGltf  :rotation="rotation"  class="w-full h-full rounded-full" backgroundAlpha="0"
             backgroundColor="#FFF" :src="`/${namer}.glb`"  />
             
           </div>
        
       </div>
-       <div class="" v-else>
+       <!-- <div class="" v-else>
           <div  class="">
             <ModelGltf :rotation="rotation"  class="rounded-full" backgroundAlpha="0"
             backgroundColor="#FFF" :src="`/${namer}.glb`"  />
           </div>
-      </div>
+      </div> -->
       <!-- <div v-if="namer = !'r7'">
        
           <div  class="bg-white">
@@ -53,3 +53,11 @@ export default {
   components: { ModelGltf  },
 };
 </script>
+<style scoped>
+  .grounder{
+    background-color: rgba(0, 0, 0, 0.21);
+
+backdrop-filter: blur(10px);
+ 
+  }
+</style>

@@ -9,6 +9,7 @@
                          <font-awesome-icon :icon="['fab', 'instagram']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
                                                  <font-awesome-icon :icon="['fab', 'twitter']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
                                                                          <font-awesome-icon :icon="['fab', 'whatsapp']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
+                         <font-awesome-icon :icon="['fas', 'expand-arrows-alt']" size="lg" class="text-black transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
 
                
 
@@ -62,15 +63,15 @@
 import axios from 'axios'
 export default {
     computed: {
-        test(){
-            return this.$store.getters.myGetter
-        },
-        use(){
-            return this.$store.state.data
-        }
+        // test(){
+        //     return this.$store.getters.myGetter
+        // },
+        // use(){
+        //     return this.$store.state.data
+        // }
     },
     mounted() {
-    this.$store.dispatch("getData");
+    // this.$store.dispatch("getData");
   }
 }
 </script>

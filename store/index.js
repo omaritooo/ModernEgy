@@ -5,10 +5,13 @@ import axios from 'axios';
         email: '',
 company_name: '',
 phone: '',
-note: ''
+note: '',
 
     },
+    screen: false,
     loading: true,
+    geotoggle: true,
+
     id: '24',
     city: [],
     url: 'https://modernegy.adgroup.tech/api/v1/cities/',
@@ -58,6 +61,19 @@ note: ''
     SET_CENTER(state, center)
     {
       state.center = center;
+    },
+    toggle(state){
+      state.geotoggle = true;
+    },
+    revtoggle(state){
+      state.geotoggle = false;
+    },
+    Fscreen(state){
+      state.screen = !state.screen;
+      console.log(state.screen)
+    },
+    Mscreen(state){
+      state.screen = false
     }
     
   }
@@ -65,7 +81,6 @@ note: ''
   export const getters = {
       myGetter(state){ return state.data},
       cityGetter(state){
-          console.log(state.url)
         return state.city},
       getFormDetails(state)
       {
@@ -76,6 +91,12 @@ note: ''
         return state.id},
         getCenter(state)
         {return state.center;
+        },
+        getGeo(state){
+          return state.geotoggle;
+        },
+        getScreen(state){
+          return state.screen;
         }
   }
 

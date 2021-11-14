@@ -2,15 +2,15 @@
   <div class="flex flex-col justify-center pt-10 bg-gray-100" >
       <h1 class="py-10 text-3xl text-center">
           Our Partners
-      
       </h1>
        <div class="flex flex-col justify-center p-4">
            <client-only>
-                 <div v-for="part in partner" class="w-1/3 mx-auto " :key="part.index">
+                 <div  class="w-1/3 mx-auto " >
 
-                <carousel :scrollPerPage="false" paginationEnabled="false" autoplay="true" perPage="1" autoplayHoverPause="true" paginationSize="0" loop="true" v-for="pa in part.district" :key="pa.index">
-                    <slide v-for="proj in pa.project" :key="proj.index">
-                      <div v-if="proj.partner.image_path"><img :src="proj.partner.image_path"></div>
+                <carousel :scrollPerPage="false" paginationEnabled="false" autoplay='true' perPage="1" autoplayHoverPause="true" paginationSize="0" loop="true" >
+                    <slide v-for="part in partners" :key="part.index">
+                      <div v-if="part.image_path !== null || part.image_path !== ''"><img :src="part.image_path"></div>
+                      <div v-if="part.image_path == null || part.image_path ==''"> {{part.title}}</div>
                     </slide>
                 
                 </carousel>
@@ -63,7 +63,7 @@ export default {
     data() {
           return {
            
-            
+            partners: [],
             part: false,
              form: {
             email: '',
@@ -103,7 +103,8 @@ company: ''
          
         },
         mounted() {
-          this.$store.dispatch("getData");
+          // this.$store.dispatch("getData");
+          axios.get("https://modernegy.adgroup.tech/api/v1/partners").then(response => this.partners = response.data.data)
         },
         computed: {
  partner(){

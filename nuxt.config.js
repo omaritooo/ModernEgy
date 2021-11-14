@@ -59,7 +59,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    'nuxt-lazy-load',
+    
     'nuxt-leaflet',
     '@nuxtjs/dotenv',
     '@nuxtjs/fontawesome',
@@ -78,7 +78,7 @@ export default {
         "faPinterest",
         "faTelegramPlane"
       ],
-      solid: ['faArrowRight', 'faTimes']
+      solid: ['faArrowRight', 'faTimes', 'faExpandArrowsAlt', 'faCompress']
     }
   },
   
