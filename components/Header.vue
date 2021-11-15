@@ -1,6 +1,6 @@
 <template>
  
-  <div class="z-30 flex flex-col px-32 py-10 mb-16 overflow-hidden">
+  <div class="z-30 flex flex-col px-16 py-10 mx-auto mb-16 overflow-hidden">
       <div class="flex justify-center h-full my-2" style="height: fit-content"  >
           <div class="text-white h-inherit bg-site-secondary rounded-t-md ">
               <div class="px-10 py-2 text-center ">
@@ -244,7 +244,7 @@
 </div>
   
 
-<span class="absolute p-4 bg-gray-800 rounded-r-full z-70 top-72" style="font-size:30px;cursor:pointer" @click="openNav()"> <font-awesome-icon :icon="['fas', 'arrow-right']"/> </span>
+<span class="absolute py-4 pl-2 pr-4 bg-gray-800 rounded-r-full z-70 top-72" style="cursor:pointer" @click="openNav()"> <font-awesome-icon :icon="['fas', 'arrow-right']" size="lg"/> </span>
   </div>
             <Test class="" :toggles="toggles" />
           </div>

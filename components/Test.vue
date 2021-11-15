@@ -160,9 +160,9 @@
            </div>
            <div class="absolute top-4 right-4">
              <div class="flex space-x-3">
-               <button @click="tester= !tester">                         <font-awesome-icon :icon="['fas', 'expand-arrows-alt']" size="md" class="text-black transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
+               <button @click="tester= !tester">                         <font-awesome-icon :icon="['fas', 'expand-arrows-alt']" size="md" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
                </button>
-               <button  @click="screenToggle"> <font-awesome-icon :icon="['fas', 'times']" size="lg" class="text-black transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/></button>
+               <button  @click="screenToggle"> <font-awesome-icon :icon="['fas', 'times']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/></button>
              </div>
              </div>
          </div>
