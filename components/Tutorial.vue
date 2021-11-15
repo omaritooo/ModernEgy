@@ -1,5 +1,5 @@
 <template>
-  <div class="px-32 py-2 text-white" >
+  <div class="px-4 py-2 text-white md:px-24" >
     
 <!--   
     <div>
@@ -15,7 +15,7 @@
     <div class="">
   <div class="antialiased dark-mode:bg-gray-900">
   <div class="w-full dark-mode:text-gray-200 dark-mode:bg-gray-800">
-    <div  class="flex flex-col max-w-screen-xl md:flex-row ">
+    <div  class="flex flex-col md:flex-row ">
       <div class="flex flex-row items-center justify-start">
  <img class="" src="../assets/logo.svg" alt="" style="width:100px; height: 100px;">
          <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" >
@@ -27,10 +27,9 @@
       </div>
       <nav  class="flex-col flex-grow hidden pb-4 md:my-auto md:pb-0 md:flex md:justify-end md:flex-row">
         <nuxt-link to="" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Home</nuxt-link>
-        <nuxt-link to="#contact" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">About Us</nuxt-link>
+        <nuxt-link to="#partnerForm" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">About Us</nuxt-link>
         <nuxt-link to="#about" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Contact Us</nuxt-link>
-                 <nuxt-link to="#newsfeed" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">News</nuxt-link>
-
+                 <button href="#partnerFpartnerFormorm" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" @click="meth" >News</button>
       </nav>
     </div>
   </div>
@@ -54,10 +53,22 @@ export default {
     city: Object
   },
   mounted() {
-  },
+    this.$store.dispatch('getPT')
+      },
   method:
 {
-  
+  meth(){
+    console.log('zeby')
+    if (this.$store.state.partnerT == false)
+    {
+      this.$store.commit('partnerT')
+    }
+    else
+    {
+      this.$store.commit('partnerF')
+    }
+    console.log(this.$store.state.partnerT)
+  }
 }
 
 }

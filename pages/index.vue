@@ -15,7 +15,8 @@
 
    
     <ContactFrom id="contact"/>
-    <Contactus id="about"/>
+     
+     <Contactus id="about"/>
     <Newsletter id="newsfeed"/>
     <MapFooter/>
      
