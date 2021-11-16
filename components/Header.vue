@@ -1,6 +1,6 @@
 <template>
  
-  <div class="z-30 flex flex-col px-16 py-10 mx-auto mb-16 overflow-hidden">
+  <div class="z-30 flex flex-col px-16 py-4 mx-auto mb-16 overflow-hidden">
       <div class="flex justify-center h-full my-2" style="height: fit-content"  >
           <div class="text-white h-inherit bg-site-secondary rounded-t-md ">
               <div class="px-10 py-2 text-center ">
@@ -8,14 +8,14 @@
                   
               </div>
               <hr class="text-gray-100" >
-              <div class="flex flex-col py-4 space-y-5 text-left" >
+              <div class="flex flex-col py-4 space-y-5 text-lg text-left" >
                   <button @click="cityCenter(capital)" class="px-4 py-2 text-left clicker " ref="b1" >
                       New Capital
                       
 
                   </button>
-                  <div v-for="ci in cit.slice(1)" :key="ci.index">
-                    <button @click="cityCenter(ci)" class="px-4 py-2 text-left clicker " :ref="`b-${ci.id}`" :class="{'active' : ci.id == 24}">
+                  <div v-for="ci in cit.slice(1)" :key="ci.index" class="w-max">
+                    <button @click="cityCenter(ci)" class="w-full px-4 py-2 text-left clicker " :ref="`b-${ci.id}`" :class="{'active' : ci.id == 24}">
                         <!-- NEW Capital --> {{ci.title}}
                     
                     </button>
@@ -246,18 +246,18 @@
 
 <span class="absolute py-4 pl-2 pr-4 bg-gray-800 rounded-r-full z-70 top-72" style="cursor:pointer" @click="openNav()"> <font-awesome-icon :icon="['fas', 'arrow-right']" size="lg"/> </span>
   </div>
-            <Test class="" :toggles="toggles" />
+            <Test class="w-full h-full" :toggles="toggles" />
           </div>
-         <div style="" class="w-1/3 ">
-            <div class="flex flex-col justify-between w-3/4 space-y-5 " v-for="ad in ads" :key="ad.index">
-              <div class="flex flex-col justify-around space-y-5 rounded-lg" v-if="ad.status == 'active'">
-                  <div class="flex flex-col mb-4 space-y-5 justify-evenly"><img  class="px-4 py-6 bg-gray-200 rounded-lg" :src="ad.image_path" alt=""></div>
+         <div style="height: 500px;" class="w-4/5 ">
+            <div class="flex flex-col w-full gap-y-5 " v-for="ad in ads" :key="ad.index">
+              <div class="flex flex-col rounded-lg gap-y-5" v-if="ad.status == 'active'">
+                  <div class="flex flex-col mb-10 gap-y-10 "><img style="height: 305px; width: 350px;"  class="px-4 py-6 bg-gray-200 rounded-lg" :src="ad.image_path" alt=""></div>
               </div>
             </div>
           </div>
       
       </div>
-       <div class="flex justify-center space-x-8">
+       <div class="flex pl-44 ml-96 gap-x-8">
                           <button @click="comm()" class="flex px-4 py-2 space-x-2 bg-gray-200 rounded-md ">
                               <img class="w-6 pr-2" src="@/assets/bulding.svg">
                               Commercial
@@ -297,6 +297,9 @@ created(){
 
 },
 mounted(){
+
+
+  
       this.$refs['b1'].click()
        this.$refs['b1'].focus()
     this.$store.dispatch('getID')

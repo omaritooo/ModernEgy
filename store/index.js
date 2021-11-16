@@ -8,6 +8,7 @@ phone: '',
 note: '',
 
     },
+    partnerT: false,
     screen: false,
     loading: true,
     geotoggle: true,
@@ -74,6 +75,12 @@ note: '',
     },
     Mscreen(state){
       state.screen = false
+    },
+    partnerT(state){
+      state.partnerT = true
+    },
+    partnerF(state){
+      state.partnerT = false
     }
     
   }
@@ -97,6 +104,9 @@ note: '',
         },
         getScreen(state){
           return state.screen;
+        },
+        getPT(state){
+          return state.partnerT
         }
   }
 

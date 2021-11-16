@@ -30,9 +30,9 @@
            </div>
            <div class="absolute top-4 right-4">
              <div class="flex space-x-3">
-               <button  @click="tester= !tester">                           <font-awesome-icon :icon="['fas', 'expand-arrows-alt']" size="md" class="text-black transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
+               <button  @click="tester= !tester">                           <font-awesome-icon :icon="['fas', 'expand-arrows-alt']" size="md" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
                </button>
-               <button  @click="screenToggle"> <font-awesome-icon :icon="['fas', 'times']" size="lg" class="text-black transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/></button>
+               <button  @click="screenToggle"> <font-awesome-icon :icon="['fas', 'times']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/></button>
              </div>
              </div>
          </div>
@@ -52,7 +52,7 @@
           :zoom="zoom"
           :center="this.$store.state.center"
           class="z-0"
-          style="height: 60vh; width: 100%"
+          style="height: 64vh; width: 65vw;"
         >
           <l-tile-layer
             :url="url"

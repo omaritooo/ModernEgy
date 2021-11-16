@@ -4,12 +4,11 @@
             <div class="flex flex-col p-4 space-y-2 md:p-10 md:flex-row justify-evenly ">
                 <div class="flex flex-col space-y-2 md:space-y-5">
                     <div class="flex justify-center"><img class="w-1/3 md:w-1/2" src="../assets/logo.svg" alt=""></div>
-                    <div class="flex justify-around space-x-2 text-md ">
+                    <div class="flex justify-around py-4 space-x-2 sm:py-0 text-md">
                         <font-awesome-icon  :icon="['fab', 'facebook']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
                          <font-awesome-icon :icon="['fab', 'instagram']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
                                                  <font-awesome-icon :icon="['fab', 'twitter']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
                                                                          <font-awesome-icon :icon="['fab', 'whatsapp']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
-                         <font-awesome-icon :icon="['fas', 'expand-arrows-alt']" size="lg" class="text-black transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/>
 
                
 

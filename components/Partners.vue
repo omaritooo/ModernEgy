@@ -18,42 +18,44 @@
                
                  
                </client-only>
-               <button @click="part= !part" class="justify-center px-4 py-2 mx-auto text-white rounded-md bg-site-secondary">
+               <button @click="toto" class="justify-center px-4 py-2 mx-auto text-white rounded-md bg-site-secondary">
                   Become a Partner 
               </button>
              
        </div>
           
 
-          <transition name="slide-fade" >
-              <div v-if="part" class="flex pl-4 text-white bg-site-primary">
-                  <div class="flex flex-col justify-center w-1/2 p-10">
-                        <form v-on:submit.prevent="postForm()" class="flex flex-col justify-center w-1/2 mx-auto space-y-2">
-                            <label>Company</label>
-                            <input class="h-8 rounded-sm bg-site-secondary" type="text" name="" id="" v-model="form.company">
-                            <label>Email</label>
-                            <input class="h-8 rounded-sm bg-site-secondary" type="text" name="" id="" v-model="form.email">
-                            <label>name</label>
-                            <input class="h-8 rounded-sm bg-site-secondary" type="text" name="" id="" v-model="form.name">
-                            <label>Phone</label>
-                            <input class="h-8 rounded-sm bg-site-secondary" type="phone" name="" id="" v-model="form.phone">
-                            <label>Message</label>
-                            <textarea class="rounded-sm bg-site-secondary" type="" name="" id="" v-model="form.message"></textarea>
-                            <input type="submit"  class="w-1/4 px-4 py-2 mx-auto mt-6 rounded-md clicker bg-site-secondary" name="" id="">
-                        </form>
-                  </div>
-                  <div class="float-left w-1/2 p-10 bg-site-secondary">
-                        <div class="w-1/2 p-10 space-y-2 text-3xl">
-                            <div class="text-4xl font-bold">
-                                            Modern Egy
-                                          </div>
-                                          <div class="text-lg font-thin">
-                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata 
-                                          </div>
-                        </div>
-                  </div>
-              </div>
-          </transition>
+          <span id="partnerForm">
+            <transition name="slide-fade" >
+                <div v-if="this.$store.state.partnerT"  class="flex pl-4 text-white bg-site-primary">
+                    <div class="flex flex-col justify-center w-full p-4 md:w-1/2 md:p-10">
+                          <form v-on:submit.prevent="postForm()" class="flex flex-col justify-center w-1/2 mx-auto space-y-2">
+                              <label>Company</label>
+                              <input class="h-8 rounded-sm bg-site-secondary" type="text" name="" id="" v-model="form.company">
+                              <label>Email</label>
+                              <input class="h-8 rounded-sm bg-site-secondary" type="text" name="" id="" v-model="form.email">
+                              <label>name</label>
+                              <input class="h-8 rounded-sm bg-site-secondary" type="text" name="" id="" v-model="form.name">
+                              <label>Phone</label>
+                              <input class="h-8 rounded-sm bg-site-secondary" type="phone" name="" id="" v-model="form.phone">
+                              <label>Message</label>
+                              <textarea class="rounded-sm bg-site-secondary" type="" name="" id="" v-model="form.message"></textarea>
+                              <input type="submit"  class="px-4 py-2 mx-auto mt-6 rounded-md md:w-1/4 clicker bg-site-secondary" name="" id="">
+                          </form>
+                    </div>
+                    <div class="hidden float-left w-1/2 p-10 md:flex bg-site-secondary">
+                          <div class="w-1/2 p-10 space-y-2 text-3xl">
+                              <div class="text-4xl font-bold">
+                                              Modern Egy
+                                            </div>
+                                            <div class="text-lg font-thin">
+                                              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+                                            </div>
+                          </div>
+                    </div>
+                </div>
+            </transition>
+          </span>
   </div>
 </template>
 
@@ -99,17 +101,32 @@ company: ''
       this.form.message = ''
       this.form.company = ''
           },
+          toto()
+          {
+            if (this.$store.state.partnerT == true)
+            {
+              this.$store.commit('partnerF')
+            }
+            else
+            {
+              this.$store.commit('partnerT')
+            }
+          }
          
          
         },
         mounted() {
           // this.$store.dispatch("getData");
           axios.get("https://modernegy.adgroup.tech/api/v1/partners").then(response => this.partners = response.data.data)
+          this.$store.dispatch("getPT")
         },
         computed: {
  partner(){
             return this.$store.state.data;
           },
+          tot(){
+            return this.$store.state.partnerT;
+          }
          
         }
     }

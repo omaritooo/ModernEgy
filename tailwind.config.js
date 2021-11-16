@@ -17,6 +17,7 @@ module.exports = {
       '2xl': '1536px',
     },
     colors: {
+      
       transparent: 'transparent',
       current: 'currentColor',
       site: {
@@ -33,6 +34,7 @@ module.exports = {
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
+      
     },
     spacing: {
       px: '1px',

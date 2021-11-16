@@ -1,5 +1,5 @@
 <template>
-  <div class="px-32 py-2 text-white" >
+  <div class="px-4 py-2 text-white md:px-10" >
     
 <!--   
     <div>
@@ -12,10 +12,10 @@
         Home
       </div>
     </div> -->
-    <div class="">
+    <!-- <div class="">
   <div class="antialiased dark-mode:bg-gray-900">
   <div class="w-full dark-mode:text-gray-200 dark-mode:bg-gray-800">
-    <div  class="flex flex-col max-w-screen-xl md:flex-row ">
+    <div  class="flex flex-col md:flex-row ">
       <div class="flex flex-row items-center justify-start">
  <img class="" src="../assets/logo.svg" alt="" style="width:100px; height: 100px;">
          <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" >
@@ -27,15 +27,63 @@
       </div>
       <nav  class="flex-col flex-grow hidden pb-4 md:my-auto md:pb-0 md:flex md:justify-end md:flex-row">
         <nuxt-link to="" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Home</nuxt-link>
-        <nuxt-link to="#contact" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">About Us</nuxt-link>
+        <nuxt-link to="#partnerForm" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">About Us</nuxt-link>
         <nuxt-link to="#about" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Contact Us</nuxt-link>
-                 <nuxt-link to="#newsfeed" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">News</nuxt-link>
-
+                 <button href="#partnerFpartnerFormorm" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" @click="meth" >News</button>
       </nav>
     </div>
   </div>
 </div>
-  </div>
+  </div> -->
+  <nav class="relative flex flex-wrap items-center justify-between px-2 py-2 bg-blueGray-500">
+    <div class="container flex flex-wrap items-center justify-between px-4 ">
+      <div class="relative flex justify-between w-full px-4 lg:w-auto lg:static lg:block lg:justify-start">
+        <a class="inline-block py-1 mr-4 text-sm font-bold leading-relaxed text-white uppercase whitespace-nowrap" href="#pablo">
+ <img class="w-16 h-16 md:w-32 md:h-32" src="../assets/logo.svg" alt="" >
+        </a>
+        <button class="block px-3 text-xl leading-none text-white bg-transparent border border-transparent border-solid rounded outline-none cursor-pointer lg:hidden focus:outline-none" type="button" >
+            
+            <button class="relative w-10 h-10 text-gray-500 focus:outline-none" @click="showMenu = !showMenu">
+                <span class="sr-only">Open main menu</span>
+                <div class="absolute block w-5 transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+                    <span aria-hidden="true" class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out" :class="{'rotate-45': showMenu,' -translate-y-1.5': !showMenu }"></span>
+                    <span aria-hidden="true" class="block absolute  h-0.5 w-5 bg-current   transform transition duration-500 ease-in-out" :class="{'opacity-0': showMenu } "></span>
+                    <span aria-hidden="true" class="block absolute  h-0.5 w-5 bg-current transform  transition duration-500 ease-in-out" :class="{'-rotate-45': showMenu, ' translate-y-1.5': !showMenu}"></span>
+                </div>
+            </button>
+        
+                        <!-- <font-awesome-icon  :icon="['fab', 'facebook']" size="lg" class="text-white transition duration-500 ease-in-out transform text-md hover:-translate-y-1 hover:shadow-xl"/> -->
+        </button>
+      </div>
+      <div v-bind:class="{'hidden': !showMenu, 'flex': showMenu}" class="items-center lg:flex lg:flex-grow">
+        <transition  enter-active-class="transition duration-100 ease-out"
+                      enter-class="transform scale-95 opacity-0"
+                      enter-to-class="transform scale-100 opacity-100"
+                      leave-active-class="transition duration-75 ease-in"
+                      leave-class="transform scale-100 opacity-100"
+                      leave-to-class="transform scale-95 opacity-0">
+          <ul class="flex flex-col ml-auto list-none md:justify-end lg:flex-row">
+            <li class="nav-item">
+                          <nuxt-link to="" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Home</nuxt-link>
+
+            </li>
+            <li class="nav-item">
+                     <nuxt-link to="#partnerForm" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">About Us</nuxt-link>
+
+            </li>
+            <li class="nav-item">
+                     <nuxt-link to="#about" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Contact Us</nuxt-link>
+
+            </li>
+            <li class="nav-item">
+                 <nuxt-link to="#partnerForm" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"  >News</nuxt-link>
+
+            </li>
+          </ul>
+        </transition>
+      </div>
+    </div>
+  </nav>
 
     
   </div>
@@ -47,17 +95,33 @@ export default {
   data(){
     return{
       map: {},
-      
+      showMenu: false
+
     }
   },
   props:{
     city: Object
   },
   mounted() {
-  },
+    this.$store.dispatch('getPT')
+      },
   method:
 {
-  
+  meth(){
+    console.log('zeby')
+    if (this.$store.state.partnerT == false)
+    {
+      this.$store.commit('partnerT')
+    }
+    else
+    {
+      this.$store.commit('partnerF')
+    }
+    console.log(this.$store.state.partnerT)
+  },
+  toggleNavbar(){
+      this.showMenu = !this.showMenu;
+    }
 }
 
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-end el" data-aos="fade-left">
-      <div class="w-1/2 h-full ">
-        <div class="float-left w-1/2 h-full px-24 py-32 text-6xl text-left text-white bg-white test texter">
+      <div class="h-full md:w-1/2 ">
+        <div class="h-full px-10 py-32 text-6xl text-left text-white bg-white md:px-24 md:float-left md:w-1/2 test texter">
             <div class="inline-block my-auto space-y-3 align-middle">
               <h3 class="text-3xl font-bold text-left text-white"> About us</h3>
               <div class="text-4xl font-thin">
@@ -38,6 +38,17 @@ export default {
 
 backdrop-filter: blur(10px);
  
+}
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+    .el {
+      width: 100vw;
+      height:70vh;
+    }
+
 }
 
 </style>
