@@ -57,7 +57,26 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
+    ['nuxt-lazy-load', {
+      // These are the default values
+      images: true,
+      videos: true,
+      audios: true,
+      iframes: true,
+      native: false,
+      directiveOnly: true,
+      
+      // Default image must be in the static folder
+  
+      // To remove class set value to false
+      loadingClass: 'isLoading',
+      loadedClass: 'isLoaded',
+      appendClass: 'lazyLoad',
+      
+      observerConfig: {
+        // See IntersectionObserver documentation
+      }
+    }],
     '@nuxtjs/axios',
     
     'nuxt-leaflet',

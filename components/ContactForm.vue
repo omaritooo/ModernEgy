@@ -82,7 +82,7 @@ let data = new FormData();
 <style scoped>
 .el {
   width: 100vw;
-  height: 30vw;
+  
    
   background-image: url('../assets/simon-zhu-4hluhoRJokI-unsplash.svg');
   background-size: cover;
@@ -102,7 +102,7 @@ backdrop-filter: blur(10px);
   and (-webkit-min-device-pixel-ratio: 3) { 
     .el {
       width: 100vw;
-      height:70vh;
+      
     }
 
 }

@@ -62,21 +62,21 @@
                       leave-active-class="transition duration-75 ease-in"
                       leave-class="transform scale-100 opacity-100"
                       leave-to-class="transform scale-95 opacity-0">
-          <ul class="flex flex-col ml-auto list-none md:justify-end lg:flex-row">
+          <ul class="flex flex-col ml-auto list-none gap-y-4 md:justify-end lg:flex-row">
             <li class="nav-item">
                           <nuxt-link to="" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Home</nuxt-link>
 
             </li>
             <li class="nav-item">
-                     <nuxt-link to="#partnerForm" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">About Us</nuxt-link>
+                          <nuxt-link to="#partnerForm" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">About Us</nuxt-link>
 
             </li>
             <li class="nav-item">
-                     <nuxt-link to="#about" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Contact Us</nuxt-link>
+                          <nuxt-link to="#about" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Contact Us</nuxt-link>
 
             </li>
-            <li class="nav-item">
-                 <nuxt-link to="#partnerForm" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"  >News</nuxt-link>
+            <li class="nav-item" >
+                           <nuxt-link to="#newsfeed" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"   >News</nuxt-link>
 
             </li>
           </ul>
@@ -108,15 +108,16 @@ export default {
   method:
 {
   meth(){
-    console.log('zeby')
-    if (this.$store.state.partnerT == false)
-    {
-      this.$store.commit('partnerT')
-    }
-    else
-    {
-      this.$store.commit('partnerF')
-    }
+    console.log('Test')
+    // if (this.$store.state.partnerT == false)
+    // {
+    //   this.$store.commit('partnerT')
+    // }
+    // else if(this.$store.state.partnerT == true)
+    // {
+    //   this.$store.commit('partnerF')
+    // }
+    this.$store.commit('partnerT')
     console.log(this.$store.state.partnerT)
   },
   toggleNavbar(){

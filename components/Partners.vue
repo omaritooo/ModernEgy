@@ -25,9 +25,9 @@
        </div>
           
 
-          <span id="partnerForm">
+          
             <transition name="slide-fade" >
-                <div v-if="this.$store.state.partnerT"  class="flex pl-4 text-white bg-site-primary">
+                <div v-if="tot"  class="flex pl-4 text-white bg-site-primary" >
                     <div class="flex flex-col justify-center w-full p-4 md:w-1/2 md:p-10">
                           <form v-on:submit.prevent="postForm()" class="flex flex-col justify-center w-1/2 mx-auto space-y-2">
                               <label>Company</label>
@@ -55,7 +55,7 @@
                     </div>
                 </div>
             </transition>
-          </span>
+         
   </div>
 </template>
 
@@ -107,7 +107,7 @@ company: ''
             {
               this.$store.commit('partnerF')
             }
-            else
+            else if (this.$store.state.partnerT == false)
             {
               this.$store.commit('partnerT')
             }

@@ -8,9 +8,9 @@
         </div>
         <form v-on:submit.prevent="submitForm()">
           <div class="flex flex-col float-left gap-y-4">
-            <label>Email</label>
-            <div class="flex flex-col md:block md:gap-x-2 gap-y-3"><input class="p-2 rounded-md" type="email" v-model="data.email" placeholder="Enter your email address...">
-            <button @click.prevent="submitForm()" class="w-1/2 px-4 py-2 mt-2 transition duration-150 ease-in-out bg-transparent border-2 border-gray-300 rounded-md hover:bg-site-secondary hover:border-transparent hover:text-gray-100 md:w-1/3 ">Click me</button>
+            <label class="hidden md:flex">Email</label>
+            <div class="flex mt-2 gap-x-2 md:block md:gap-x-2 gap-y-3"><input class="px-1 py-2 rounded-md md:p-2" type="email" v-model="data.email" placeholder="Enter your email address...">
+            <button @click.prevent="submitForm()" class="w-full px-2 transition duration-150 ease-in-out bg-transparent border-2 border-gray-300 rounded-md md:px-4 md:py-2 md:mt-2 hover:bg-site-secondary hover:border-transparent hover:text-gray-100 md:w-1/3 ">Click me</button>
             </div>
             </div>
         </form>

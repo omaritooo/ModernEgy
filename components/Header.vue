@@ -1,284 +1,305 @@
 <template>
  
-  <div class="z-30 flex flex-col px-16 py-4 mx-auto mb-16 overflow-hidden">
-      <div class="flex justify-center h-full my-2" style="height: fit-content"  >
-          <div class="text-white h-inherit bg-site-secondary rounded-t-md ">
-              <div class="px-10 py-2 text-center ">
-                  Districts
-                  
-              </div>
-              <hr class="text-gray-100" >
-              <div class="flex flex-col py-4 space-y-5 text-lg text-left" >
-                  <button @click="cityCenter(capital)" class="px-4 py-2 text-left clicker " ref="b1" >
-                      New Capital
-                      
-
-                  </button>
-                  <div v-for="ci in cit.slice(1)" :key="ci.index" class="w-max">
-                    <button @click="cityCenter(ci)" class="w-full px-4 py-2 text-left clicker " :ref="`b-${ci.id}`" :class="{'active' : ci.id == 24}">
-                        <!-- NEW Capital --> {{ci.title}}
-                    
+  <div>
+    <div class="z-30 flex-col hidden px-16 py-4 mx-auto mb-16 overflow-hidden md:flex">
+        <div class="flex justify-center h-full my-2" style="height: fit-content"  >
+            <div class="text-white h-inherit bg-site-secondary rounded-t-md ">
+                <div class="px-10 py-2 text-center ">
+                    Districts
+    
+                </div>
+                <hr class="text-gray-100" >
+                <div class="flex flex-col py-4 space-y-5 text-lg text-left" >
+                    <button @click="cityCenter(capital)" class="px-4 py-2 text-left clicker " ref="b1" >
+                        New Capital
+    
                     </button>
-                  </div>
-                  
-              </div>
-          </div>
-          <div class="flex flex-col h-full px-2 mx-2 " style="width: 100%; height: fit-content;">
-            <div>
-              <!-- Dropdowns -->
-              <div class="flex justify-center py-2 mx-auto space-x-2 bg-site-secondary rounded-t-md">
-                <div
-                    class="relative z-50 inline-block text-left text-white shadow-lg"
-                   
-                  >
-                 
-                    <div>
-                      <span class="rounded-md shadow-sm">
-                        <button
-                          @click="menu1()"
-                          type="button"
-                          class="inline-flex items-center justify-between w-full h-10 px-4 py-4 text-sm font-medium leading-5 text-gray-100 transition duration-150 ease-in-out border-none rounded-md bg-site-secondary focus:outline-none focus:border-blue-300 focus:shadow-outline-blue btn-focus"
-                          id="options-menu"
-                          aria-haspopup="true"
-                          aria-expanded="true"
-                        >
-                          <span> Developers </span>
-                          <img
-                            src="https://s.svgbox.net/hero-solid.svg?ic=chevron-down&fill=grey-800"
-                            class="w-5 h-5 ml-2 -mr-1"
-                          />
-                        </button>
-                      </span>
+                    <div v-for="ci in cit.slice(1)" :key="ci.index" class="w-max">
+                      <button @click="cityCenter(ci)" class="w-full px-4 py-2 text-left clicker " :ref="`b-${ci.id}`" :class="{'active' : ci.id == 24}">
+                          <!-- NEW Capital --> {{ci.title}}
+    
+                      </button>
                     </div>
-                    <transition
-                      enter-active-class="transition duration-100 ease-out"
-                      enter-class="transform scale-95 opacity-0"
-                      enter-to-class="transform scale-100 opacity-100"
-                      leave-active-class="transition duration-75 ease-in"
-                      leave-class="transform scale-100 opacity-100"
-                      leave-to-class="transform scale-95 opacity-0"
-                    >
-                      <div
-                        v-if="menus.Menu1"
-                        class="absolute right-0 z-20 w-56 mt-2 overflow-hidden text-sm origin-top-right rounded-md shadow-lg bg-site-secondary"
-                      >
-                        <div
-                          class="rounded-md shadow-xs bg-site-secondary"
-                          role="menu"
-                          aria-orientation="vertical"
-                          aria-labelledby="options-menu"
-                        >
-                          
-                       
-                          <div class="py-1" v-for="set in setter " :key="set.index">
-                           
-                 <div v-for="district in set.district" :key="district.id">
-                    
-                   <div v-for="partner in district.project" :key="partner.id" class="flex items-center p-4 space-x-2">
-                     {{partner.partner.company_name}}
-                   <!-- <div v-if="partner !== null || partner !== 'undefined'">
-                     <div v-for="part in partner.partner" :key="part.id">
-                       {{part.id}}
-                     </div>
-                   </div> -->
+    
                 </div>
-                 </div>
-                           
-                           
-                            
-                          </div>
-                         
-                        </div>
-                      </div>
-                    </transition>
-                   
-                  </div>
-                          <div
-                    class="relative z-50 inline-block text-left text-white rounded-lg shadow-lg"
-                   
-                  >
-                 
-                    <div>
-                      <span class="rounded-lg shadow-sm">
-                        <button
-                          @click="menu2()"
-                          type="button"
-                          class="inline-flex items-center justify-between w-full h-10 px-4 py-4 text-sm font-medium leading-5 text-gray-100 transition duration-150 ease-in-out border-none rounded-md bg-site-secondary focus:outline-none focus:border-blue-300 focus:shadow-outline-blue btn-focus"
-                          id="options-menu"
-                          aria-haspopup="true"
-                          aria-expanded="true"
-                        >
-                          <span> Commercial </span>
-                          <img
-                            src="https://s.svgbox.net/hero-solid.svg?ic=chevron-down&fill=grey-800"
-                            class="w-5 h-5 ml-2 -mr-1"
-                          />
-                        </button>
-                      </span>
-                    </div>
-                    <transition
-                      enter-active-class="transition duration-100 ease-out"
-                      enter-class="transform scale-95 opacity-0"
-                      enter-to-class="transform scale-100 opacity-100"
-                      leave-active-class="transition duration-75 ease-in"
-                      leave-class="transform scale-100 opacity-100"
-                      leave-to-class="transform scale-95 opacity-0"
-                    >
-                      <div
-                        v-if="menus.Menu2"
-                        class="absolute right-0 z-20 w-56 mt-2 overflow-hidden text-sm origin-top-right rounded-md shadow-lg bg-site-secondary"
-                      >
-                        <div
-                          class="rounded-md shadow-xs bg-site-secondary"
-                          role="menu"
-                          aria-orientation="vertical"
-                          aria-labelledby="options-menu"
-                        >
-                          
-                       
-                          <div class="py-1" v-for="set in setter " :key="set.index">
-                           
-                 <div v-for="district in set.district" :key="district.id">
-                    
-                   <div v-for="partner in district.project" :key="partner.id" class="flex items-center p-4 space-x-2">
-                     <div v-if="partner.type == 'commercial' || partner.type == 'commercial and residential'">
-                        {{partner.title}}
-                     </div>
-                  
-                </div>
-                 </div>
-                           
-                           
-                            
-                          </div>
-                         
-                        </div>
-                      </div>
-                    </transition>
-                   
-                  </div>
-                          <div
-                    class="relative z-50 inline-block text-left text-white rounded-lg shadow-lg"
-                   
-                  >
-                 
-                    <div>
-                      <span class="rounded-md shadow-sm">
-                        <button
-                          @click="menu3()"
-                          type="button"
-                          class="inline-flex items-center justify-between w-full h-10 px-4 py-4 text-sm font-medium leading-5 text-gray-100 transition duration-150 ease-in-out border-none rounded-md bg-site-secondary focus:outline-none focus:border-blue-300 focus:shadow-outline-blue btn-focus"
-                          id="options-menu"
-                          aria-haspopup="true"
-                          aria-expanded="true"
-                        >
-                          <span> Residential </span>
-                          <img
-                            src="https://s.svgbox.net/hero-solid.svg?ic=chevron-down&fill=grey-800"
-                            class="w-5 h-5 ml-2 -mr-1"
-                          />
-                        </button>
-                      </span>
-                    </div>
-                    <transition
-                      enter-active-class="transition duration-100 ease-out"
-                      enter-class="transform scale-95 opacity-0"
-                      enter-to-class="transform scale-100 opacity-100"
-                      leave-active-class="transition duration-75 ease-in"
-                      leave-class="transform scale-100 opacity-100"
-                      leave-to-class="transform scale-95 opacity-0"
-                    >
-                      <div
-                        v-if="menus.Menu3"
-                        class="absolute right-0 z-20 w-56 mt-2 overflow-hidden text-sm origin-top-right rounded-md shadow-lg bg-site-secondary"
-                      >
-                        <div
-                          class="rounded-md shadow-xs bg-site-secondary"
-                          role="menu"
-                          aria-orientation="vertical"
-                          aria-labelledby="options-menu"
-                        >
-                          
-                       
-                          <div class="py-1" v-for="set in setter " :key="set.index">
-                           
-                 <div v-for="district in set.district" :key="district.id">
-                    
-                   <div v-for="partner in district.project" :key="partner.id" >
-
-                     <div v-if="partner.type !== 'commercial'"  class="flex items-center p-4 space-x-2" >
-                       {{partner.title}}
-                        <!-- <div v-if="partner.title">{{partner.title}}</div> -->
-                     </div>
-                  
-                </div>
-                 </div>
-                           
-                           
-                            
-                          </div>
-                         
-                        </div>
-                      </div>
-                    </transition>
-                   
-                  </div>
-              </div>
-  <!-- End Dropdown -->
             </div>
-            <div class="absolute py-2 z-60 top-48">
-
-         <div id="mySidenav" class=" sidenav">
-  <a href="javascript:void(0)" class="closebtn" @click="closeNav()">&times;</a>
-  <div v-for="set in setter" :key="set.id">
-    <h2 class="text-lg text-center text-white">
-      {{set.title}}
-    </h2>
-
-    <div v-if="testtog" class="flex mx-2 mt-4 "><iframe id="ifram" class="border-2 border-gray-200 rounded-lg" width="360" height="260" :src="set.video_path" :title="set.title" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    <p class="p-4 font-thin text-white ">
-{{set.description}}
-
-    </p>
-  </div>
-</div>
-  
-
-<span class="absolute py-4 pl-2 pr-4 bg-gray-800 rounded-r-full z-70 top-72" style="cursor:pointer" @click="openNav()"> <font-awesome-icon :icon="['fas', 'arrow-right']" size="lg"/> </span>
-  </div>
-            <Test class="w-full h-full" :toggles="toggles" />
-          </div>
-         <div style="height: 500px;" class="w-4/5 ">
-            <div class="flex flex-col w-full gap-y-5 " v-for="ad in ads" :key="ad.index">
-              <div class="flex flex-col rounded-lg gap-y-5" v-if="ad.status == 'active'">
-                  <div class="flex flex-col mb-10 gap-y-10 "><img style="height: 305px; width: 350px;"  class="px-4 py-6 bg-gray-200 rounded-lg" :src="ad.image_path" alt=""></div>
+            <div class="flex flex-col h-full px-2 mx-2 " style="width: 100%; height: fit-content;">
+              <div>
+                <!-- Dropdowns -->
+                <div class="flex justify-center py-2 mx-auto space-x-2 bg-site-secondary rounded-t-md">
+                  <div
+                      class="relative z-50 inline-block text-left text-white shadow-lg"
+    
+                    >
+    
+                      <div>
+                        <span class="rounded-md shadow-sm">
+                          <button
+                            @click="menu1()"
+                            type="button"
+                            class="inline-flex items-center justify-between w-full h-10 px-4 py-4 text-sm font-medium leading-5 text-gray-100 transition duration-150 ease-in-out border-none rounded-md bg-site-secondary focus:outline-none focus:border-blue-300 focus:shadow-outline-blue btn-focus"
+                            id="options-menu"
+                            aria-haspopup="true"
+                            aria-expanded="true"
+                          >
+                            <span> Developers </span>
+                            <img
+                              src="https://s.svgbox.net/hero-solid.svg?ic=chevron-down&fill=grey-800"
+                              class="w-5 h-5 ml-2 -mr-1"
+                            />
+                          </button>
+                        </span>
+                      </div>
+                      <transition
+                        enter-active-class="transition duration-100 ease-out"
+                        enter-class="transform scale-95 opacity-0"
+                        enter-to-class="transform scale-100 opacity-100"
+                        leave-active-class="transition duration-75 ease-in"
+                        leave-class="transform scale-100 opacity-100"
+                        leave-to-class="transform scale-95 opacity-0"
+                      >
+                        <div
+                          v-if="menus.Menu1"
+                          class="absolute right-0 z-20 w-56 mt-2 overflow-hidden text-sm origin-top-right rounded-md shadow-lg bg-site-secondary"
+                        >
+                          <div
+                            class="rounded-md shadow-xs bg-site-secondary"
+                            role="menu"
+                            aria-orientation="vertical"
+                            aria-labelledby="options-menu"
+                          >
+    
+    
+                            <div class="py-1" v-for="set in setter " :key="set.index">
+    
+                   <div v-for="district in set.district" :key="district.id">
+    
+                     <div v-for="partner in district.project" :key="partner.id" class="flex items-center p-4 space-x-2">
+                       {{partner.partner.company_name}}
+                     <!-- <div v-if="partner !== null || partner !== 'undefined'">
+                       <div v-for="part in partner.partner" :key="part.id">
+                         {{part.id}}
+                       </div>
+                     </div> -->
+                  </div>
+                   </div>
+    
+    
+    
+                            </div>
+    
+                          </div>
+                        </div>
+                      </transition>
+    
+                    </div>
+                            <div
+                      class="relative z-50 inline-block text-left text-white rounded-lg shadow-lg"
+    
+                    >
+    
+                      <div>
+                        <span class="rounded-lg shadow-sm">
+                          <button
+                            @click="menu2()"
+                            type="button"
+                            class="inline-flex items-center justify-between w-full h-10 px-4 py-4 text-sm font-medium leading-5 text-gray-100 transition duration-150 ease-in-out border-none rounded-md bg-site-secondary focus:outline-none focus:border-blue-300 focus:shadow-outline-blue btn-focus"
+                            id="options-menu"
+                            aria-haspopup="true"
+                            aria-expanded="true"
+                          >
+                            <span> Commercial </span>
+                            <img
+                              src="https://s.svgbox.net/hero-solid.svg?ic=chevron-down&fill=grey-800"
+                              class="w-5 h-5 ml-2 -mr-1"
+                            />
+                          </button>
+                        </span>
+                      </div>
+                      <transition
+                        enter-active-class="transition duration-100 ease-out"
+                        enter-class="transform scale-95 opacity-0"
+                        enter-to-class="transform scale-100 opacity-100"
+                        leave-active-class="transition duration-75 ease-in"
+                        leave-class="transform scale-100 opacity-100"
+                        leave-to-class="transform scale-95 opacity-0"
+                      >
+                        <div
+                          v-if="menus.Menu2"
+                          class="absolute right-0 z-20 w-56 mt-2 overflow-hidden text-sm origin-top-right rounded-md shadow-lg bg-site-secondary"
+                        >
+                          <div
+                            class="rounded-md shadow-xs bg-site-secondary"
+                            role="menu"
+                            aria-orientation="vertical"
+                            aria-labelledby="options-menu"
+                          >
+    
+    
+                            <div class="py-1" v-for="set in setter " :key="set.index">
+    
+                   <div v-for="district in set.district" :key="district.id">
+    
+                     <div v-for="partner in district.project" :key="partner.id" class="flex items-center p-4 space-x-2">
+                       <div v-if="partner.type == 'commercial' || partner.type == 'commercial and residential'">
+                          {{partner.title}}
+                       </div>
+    
+                  </div>
+                   </div>
+    
+    
+    
+                            </div>
+    
+                          </div>
+                        </div>
+                      </transition>
+    
+                    </div>
+                            <div
+                      class="relative z-50 inline-block text-left text-white rounded-lg shadow-lg"
+    
+                    >
+    
+                      <div>
+                        <span class="rounded-md shadow-sm">
+                          <button
+                            @click="menu3()"
+                            type="button"
+                            class="inline-flex items-center justify-between w-full h-10 px-4 py-4 text-sm font-medium leading-5 text-gray-100 transition duration-150 ease-in-out border-none rounded-md bg-site-secondary focus:outline-none focus:border-blue-300 focus:shadow-outline-blue btn-focus"
+                            id="options-menu"
+                            aria-haspopup="true"
+                            aria-expanded="true"
+                          >
+                            <span> Residential </span>
+                            <img
+                              src="https://s.svgbox.net/hero-solid.svg?ic=chevron-down&fill=grey-800"
+                              class="w-5 h-5 ml-2 -mr-1"
+                            />
+                          </button>
+                        </span>
+                      </div>
+                      <transition
+                        enter-active-class="transition duration-100 ease-out"
+                        enter-class="transform scale-95 opacity-0"
+                        enter-to-class="transform scale-100 opacity-100"
+                        leave-active-class="transition duration-75 ease-in"
+                        leave-class="transform scale-100 opacity-100"
+                        leave-to-class="transform scale-95 opacity-0"
+                      >
+                        <div
+                          v-if="menus.Menu3"
+                          class="absolute right-0 z-20 w-56 mt-2 overflow-hidden text-sm origin-top-right rounded-md shadow-lg bg-site-secondary"
+                        >
+                          <div
+                            class="rounded-md shadow-xs bg-site-secondary"
+                            role="menu"
+                            aria-orientation="vertical"
+                            aria-labelledby="options-menu"
+                          >
+    
+    
+                            <div class="py-1" v-for="set in setter " :key="set.index">
+    
+                   <div v-for="district in set.district" :key="district.id">
+    
+                     <div v-for="partner in district.project" :key="partner.id" >
+                       <div v-if="partner.type !== 'commercial'"  class="flex items-center p-4 space-x-2" >
+                         {{partner.title}}
+                          <!-- <div v-if="partner.title">{{partner.title}}</div> -->
+                       </div>
+    
+                  </div>
+                   </div>
+    
+    
+    
+                            </div>
+    
+                          </div>
+                        </div>
+                      </transition>
+    
+                    </div>
+                </div>
+    <!-- End Dropdown -->
+              </div>
+              <div class="absolute py-2 z-60 top-48" v-lazy-load>
+           <div id="mySidenav" class=" sidenav">
+    <a href="javascript:void(0)" class="closebtn" @click="closeNav()">&times;</a>
+    <div v-for="set in setter" :key="set.id">
+      <h2 class="text-lg text-center text-white">
+        {{set.title}}
+      </h2>
+      <div v-if="testtog" class="flex mx-2 mt-4 "><iframe id="ifram" class="border-2 border-gray-200 rounded-lg" width="360" height="260" :src="set.video_path" :title="set.title" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      <p class="p-4 font-thin text-white ">
+    {{set.description}}
+      </p>
+    </div>
+    </div>
+    
+    
+    <span class="absolute py-4 pl-2 pr-4 bg-gray-800 rounded-r-full z-70 top-72" style="cursor:pointer" @click="openNav()"> <font-awesome-icon :icon="['fas', 'arrow-right']" size="lg"/> </span>
+    </div>
+              <Test class="w-full h-full" :toggles="toggles" />
+            </div>
+           <div style="height: 500px;" class="w-4/5 " v-lazy-load>
+              <div class="flex flex-col w-full gap-y-5 " v-for="ad in ads" :key="ad.index">
+                <div class="flex flex-col rounded-lg gap-y-5" v-if="ad.status == 'active'">
+                    <div class="flex flex-col mb-10 gap-y-10 "><img style="height: 305px; width: 350px;"  class="px-4 py-6 bg-gray-200 rounded-lg" :src="ad.image_path" alt=""></div>
+                </div>
               </div>
             </div>
-          </div>
+    
+        </div>
+         <div class="flex pl-44 ml-96 gap-x-8">
+                            <button @click="comm()" class="flex px-4 py-2 space-x-2 bg-gray-200 rounded-md ">
+                                <img class="w-6 pr-2" src="@/assets/bulding.svg">
+                                Commercial
+                            </button>
+                             <button @click="res()" class="flex px-4 py-2 space-x-2 bg-gray-200 rounded-md ">
+                                <img class="w-6 pr-2" src="@/assets/apartment.svg">
+                                Residential
+    
+                            </button>
+                            <button @click="all()" class="px-4 py-2 bg-gray-200 rounded-md ">
+                                Show All
+    
+                            </button>
+                        </div>
+    </div>
+    <div class="flex justify-center p-4 rounded-md shadow-lg md:hidden">
       
+      <div class="flex flex-col justify-center gap-y-3 ">
+        <div class="flex justify-between w-full text-sm font-semibold text-center text-white rounded-md bg-site-secondary">
+          <button class="p-2 rounded-md clicker"  @click="cityCenter(capital)" ref="bmob">
+            New Capital
+          </button>
+          <div v-for="ci in cit.slice(1)" :key="cit.index">
+            <button  @click="cityCenter(ci)" class="p-2 rounded-md clicker">{{ci.title}}</button>
+          </div>
+        </div>
+        <MobMap :toggles="toggles"/>
+        <div class="flex justify-center w-full font-bold text-center text-white text-md gap-x-3">
+          <button class="p-2 rounded-md bg-site-secondary" @click="comm()">
+            Commercial
+          </button>
+          <button class="p-2 rounded-md bg-site-secondary " @click="res()">
+            Residential
+          </button>
+          <button class="p-2 rounded-md bg-site-secondary" @click="all()">
+            Show All
+          </button>
+        </div>
       </div>
-       <div class="flex pl-44 ml-96 gap-x-8">
-                          <button @click="comm()" class="flex px-4 py-2 space-x-2 bg-gray-200 rounded-md ">
-                              <img class="w-6 pr-2" src="@/assets/bulding.svg">
-                              Commercial
-                          </button>
-                           <button @click="res()" class="flex px-4 py-2 space-x-2 bg-gray-200 rounded-md ">
-                              <img class="w-6 pr-2" src="@/assets/apartment.svg">
-                              Residential
-
-                              
-                          </button>
-                          <button @click="all()" class="px-4 py-2 bg-gray-200 rounded-md ">
-                              Show All 
-                              
-                          </button>
-                      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-
+import MobMap from './MobileMap.vue'
 import Drop from "./Dropdown.vue"
 import Test from "./Test.vue"
 import side from "./sidemenu.vue"
@@ -287,7 +308,8 @@ components:
 {
     Drop,
     Test,
-    side
+    side,
+    MobMap
 },
 props: {
   
@@ -299,7 +321,8 @@ created(){
 mounted(){
 
 
-  
+      this.$refs['bmob'].click()
+      this.$refs['bmob'].focus()
       this.$refs['b1'].click()
        this.$refs['b1'].focus()
     this.$store.dispatch('getID')

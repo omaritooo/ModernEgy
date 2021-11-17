@@ -1,11 +1,11 @@
 <template>
-  <div class="w-full h-full grounder" style="">
+  <div class="w-full pb-10 h-5/6 grounder" style="">
     <client-only>
       <div >
         
-          <div  class="">
+          <div  class="p-4">
             
-            <ModelGltf  :rotation="rotation"  class="w-full h-full rounded-full" backgroundAlpha="0"
+            <ModelGltf  :rotation="rotation"  class="w-full p-4 rounded-full h-5/6" backgroundAlpha="0"
             backgroundColor="#FFF" :src="`/${namer}.glb`"  />
             
           </div>

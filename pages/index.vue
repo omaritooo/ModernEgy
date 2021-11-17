@@ -1,5 +1,5 @@
 <template>
- <div  class="overflow-x-hidden bg-site-primary">
+ <div  class="overflow-x-hidden bg-site-primary" >
    
       <transition name="fade-loader">
       <Loading v-if="this.$store.state.loading">
@@ -9,9 +9,9 @@
       </Loading>
     </transition>
     
-   <Tutorial id="header"  />
+   <Tutorial id="header" v-lazy-load />
     <Header :cit="distro" />
-    <Partner />
+    <Partner id="partnerForm" />
 
    
     <ContactFrom id="contact"/>

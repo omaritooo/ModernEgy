@@ -6,7 +6,9 @@
         <transition name="slide-fade">
              <div class="absolute top-0 left-0 w-full h-full p-6 z-555 " v-if="toggle " >
          <div class="relative w-full h-full rounded-lg">
-           <Model :namer="name" class="rounded-lg"/>
+           <div class="absolute top-0 w-full">
+             <Model :namer="name" class="mb-10 rounded-lg -0"/>
+           </div>
            <div class="absolute top-4 left-48 right-48">
              <div class="flex">
                <div class="text-lg">Projects:</div>
@@ -66,7 +68,7 @@
    
    
             <l-feature-group ref="features">
-   <l-popup > {{name}} </l-popup>
+   <!-- <l-popup > {{name}} </l-popup> -->
    </l-feature-group>
    
             <l-geo-json @click="openPopUpG(r7c, 'r7' )"  :geojson="r7" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
@@ -125,10 +127,12 @@
    
    <div v-if="!tester">
      <transition name="slide-fade">
-       <div class="absolute top-0 left-0 z-40 w-full h-full p-6 " v-if="toggle" >
+       <div class="absolute top-0 left-0 z-40 w-full h-full " v-if="toggle" >
          <div class="relative w-full h-full rounded-lg">
      
-           <Model :namer="name" class="rounded-lg"/>
+           <div class="absolute top-0 w-full">
+             <Model :namer="name" class="mb-10 rounded-lg -0"/>
+           </div>
            <div class="absolute top-4 left-48 right-48">
              <div class="flex">
                <div class="text-lg">Projects:</div>
@@ -180,7 +184,6 @@
 <script>
 
 import Model from "../components/Model.vue"
-import ModelFull from "../components/ModelFull.vue"
 import axios from "axios";
 
   import { ModelObj } from "vue-3d-model";
@@ -190,7 +193,7 @@ export default {
   {
     Model,
     ModelObj,
-    ModelFull
+    
   },
   props:
   {
