@@ -2,15 +2,15 @@
  
   <div>
     <div class="z-30 flex-col hidden px-16 py-4 mx-auto mb-16 overflow-hidden md:flex">
-        <div class="flex justify-center h-full my-2" style="height: fit-content"  >
-            <div class="text-white h-inherit bg-site-secondary rounded-t-md ">
+        <div class="flex justify-center h-full my-2" style=""  >
+            <div class="w-1/3 text-white h-inherit bg-site-secondary rounded-t-md ">
                 <div class="px-10 py-2 text-center ">
                     Districts
     
                 </div>
                 <hr class="text-gray-100" >
-                <div class="flex flex-col py-4 space-y-5 text-lg text-left" >
-                    <button @click="cityCenter(capital)" class="px-4 py-2 text-left clicker " ref="b1" >
+                <div class="flex flex-col px-2 py-4 space-y-5 text-le ft text-md" >
+                    <button @click="cityCenter(capital)" class="w-full px-4 py-2 text-left clicker " ref="b1" >
                         New Capital
     
                     </button>
@@ -23,7 +23,7 @@
     
                 </div>
             </div>
-            <div class="flex flex-col h-full px-2 mx-2 " style="width: 100%; height: fit-content;">
+            <div class="flex flex-col w-1/4 h-full px-2 mx-2 lg:w-3/4 " style=" ">
               <div>
                 <!-- Dropdowns -->
                 <div class="flex justify-center py-2 mx-auto space-x-2 bg-site-secondary rounded-t-md">
@@ -244,16 +244,16 @@
     </div>
               <Test class="w-full h-full" :toggles="toggles" />
             </div>
-           <div style="height: 500px;" class="w-4/5 " v-lazy-load>
+           <div  class="flex flex-col w-full h-full gap-y-2 " v-lazy-load>
               <div class="flex flex-col w-full gap-y-5 " v-for="ad in ads" :key="ad.index">
                 <div class="flex flex-col rounded-lg gap-y-5" v-if="ad.status == 'active'">
-                    <div class="flex flex-col mb-10 gap-y-10 "><img style="height: 305px; width: 350px;"  class="px-4 py-6 bg-gray-200 rounded-lg" :src="ad.image_path" alt=""></div>
+                    <div class="flex flex-col gap-y-10 "><img    class="bg-gray-200 rounded-lg imgur lg:px-4 lg:py-6" :src="ad.image_path" alt=""></div>
                 </div>
               </div>
             </div>
     
         </div>
-         <div class="flex pl-44 ml-96 gap-x-8">
+         <div class="flex gap-x-8 buttons">
                             <button @click="comm()" class="flex px-4 py-2 space-x-2 bg-gray-200 rounded-md ">
                                 <img class="w-6 pr-2" src="@/assets/bulding.svg">
                                 Commercial
@@ -499,6 +499,8 @@ transition: ease-in-out;
 background: linear-gradient(90deg, rgba(236,219,183,1) 0%, rgba(227,186,100,1) 100%);
 color: black;
 outline: none;
+border-radius: 4%;
+
 
 }
 .clicker:focus{
@@ -506,6 +508,8 @@ outline: none;
 background: linear-gradient(90deg, rgba(236,219,183,1) 0%, rgba(227,186,100,1) 100%);
 color: black;
 outline: none;
+border-radius: 4%;
+
 
 }
  .height-adjuster 
@@ -550,6 +554,41 @@ outline: none;
 .opener {
   top:150px;
   position: absolute;
+}
+
+.imgur
+{
+  height: 30vh;
+  width: 40vw;
+}
+.buttons
+{
+  margin-left: 30%;
+}
+
+@media only screen and (max-width: 1366px) {
+ .imgur
+{
+  height: 30vh;
+  width: 80vw
+}
+.buttons
+{
+  margin-left: 30%
+}
+}
+
+
+@media only screen and (max-width: 768px) {
+ .imgur
+{
+  height: 30vh;
+  width: 50vw
+}
+.buttons
+{
+  margin-left: 30%
+}
 }
 
 </style>

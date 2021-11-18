@@ -11,7 +11,7 @@
            </div>
            <div class="absolute top-4 left-48 right-48">
              <div class="flex">
-               <div class="text-lg">Projects:</div>
+               <div class="text-lg text-white">Projects:</div>
                <div class="flex flex-row text-lg">
                  <div class="" v-for="data in project" :key="data.index" >
                    <div v-for="dist in data.district" :key="dist.index"  >
@@ -54,7 +54,8 @@
           :zoom="zoom"
           :center="this.$store.state.center"
           class="z-0"
-          style="height: 64vh; width: 65vw;"
+          id="map"
+         
         >
           <l-tile-layer
             :url="url"
@@ -588,4 +589,26 @@ color: black;
 .opener {
   top:500px
 }
+ #map{
+  width:64vw;
+  height: 60vh;
+
+}
+@media only screen and (max-width: 1366px) {
+   #map{
+  width:55vw;
+  height: 55vh;
+
+}
+}
+
+@media only screen and (max-width: 768px) {
+ #map{
+  width:30vw;
+  height: 55vh;
+
+}
+}
+
+
 </style>
