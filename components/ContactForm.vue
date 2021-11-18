@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-start el"  
 >
-      <div class="h-full md:w-1/2 " 
+      <div class="w-full h-full md:w-1/2 " 
 >
         <div class="h-full px-24 py-32 text-6xl text-left text-white bg-white md:float-right md:w-1/2 test texter">
             <div class="inline-block my-auto space-y-3 align-middle">

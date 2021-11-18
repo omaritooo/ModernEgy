@@ -90,7 +90,7 @@
           </div>
             <div v-if="toggles.ct">
                 <l-feature-group ref="features">
-   <l-popup > <span> <Model/> {{name}}  </span></l-popup>
+   <!-- <l-popup > <span> <Model/> {{name}}  </span></l-popup> -->
    </l-feature-group>
                <l-geo-json @click="openPopUpG(r7c, 'r7' )"  :geojson="r7" :options-style="{color: '#EA9CA5' , weight: 0.1, fillOpacity:0.7 , opacity: 0.9  }">
             </l-geo-json>
@@ -108,7 +108,7 @@
             </div>
             <div v-else-if="toggles.rt">
                 <l-feature-group ref="features">
-   <l-popup > <span> {{name}} </span></l-popup>
+   <!-- <l-popup > <span> {{name}} </span></l-popup> -->
    </l-feature-group>
               <l-geo-json @click="openPopUpG(r7c, 'r7' )"  :geojson="r7" :options-style="{color: '#EA9CA5' , weight: 1.5, fillOpacity:0.7 , fillColor: '#E7A2A5', opacity: 1  }">
             </l-geo-json>
@@ -605,6 +605,13 @@ color: black;
 @media only screen and (max-width: 768px) {
  #map{
   width:30vw;
+  height: 45vh;
+
+}
+}
+@media only screen and (max-width: 768px) and (max-height: 1024px){
+ #map{
+  width:50vw;
   height: 55vh;
 
 }

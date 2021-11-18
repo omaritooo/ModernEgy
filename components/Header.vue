@@ -1,9 +1,9 @@
 <template>
  
   <div>
-    <div class="z-30 flex-col hidden px-16 py-4 mx-auto mb-16 overflow-hidden md:flex">
-        <div class="flex justify-center h-full my-2" style=""  >
-            <div class="w-1/3 text-white h-inherit bg-site-secondary rounded-t-md ">
+    <div class="z-30 flex-col hidden px-16 mx-auto overflow-hidden queryy tab:hidden lg:flex md:flex">
+        <div class="flex justify-center h-full " style=""  >
+            <div class="w-1/3 text-white h-inherit sidem bg-site-secondary rounded-t-md ">
                 <div class="px-10 py-2 text-center ">
                     Districts
     
@@ -26,7 +26,7 @@
             <div class="flex flex-col w-1/4 h-full px-2 mx-2 lg:w-3/4 " style=" ">
               <div>
                 <!-- Dropdowns -->
-                <div class="flex justify-center py-2 mx-auto space-x-2 bg-site-secondary rounded-t-md">
+                <div class="flex justify-center py-2 mx-auto space-x-2 dropdown bg-site-secondary rounded-t-md">
                   <div
                       class="relative z-50 inline-block text-left text-white shadow-lg"
     
@@ -225,7 +225,7 @@
                 </div>
     <!-- End Dropdown -->
               </div>
-              <div class="absolute py-2 z-60 top-48" v-lazy-load>
+              <div class="absolute py-2 z-60 top-54 " v-lazy-load>
            <div id="mySidenav" class=" sidenav">
     <a href="javascript:void(0)" class="closebtn" @click="closeNav()">&times;</a>
     <div v-for="set in setter" :key="set.id">
@@ -240,7 +240,7 @@
     </div>
     
     
-    <span class="absolute py-4 pl-2 pr-4 bg-gray-800 rounded-r-full z-70 top-72" style="cursor:pointer" @click="openNav()"> <font-awesome-icon :icon="['fas', 'arrow-right']" size="lg"/> </span>
+    <span class=" opener" style="cursor:pointer" @click="openNav()"> <font-awesome-icon :icon="['fas', 'arrow-right']" size="lg"/> </span>
     </div>
               <Test class="w-full h-full" :toggles="toggles" />
             </div>
@@ -253,7 +253,7 @@
             </div>
     
         </div>
-         <div class="flex gap-x-8 buttons">
+         <div class="flex mt-2 gap-x-8 buttons">
                             <button @click="comm()" class="flex px-4 py-2 space-x-2 bg-gray-200 rounded-md ">
                                 <img class="w-6 pr-2" src="@/assets/bulding.svg">
                                 Commercial
@@ -269,7 +269,7 @@
                             </button>
                         </div>
     </div>
-    <div class="flex justify-center p-4 rounded-md shadow-lg md:hidden">
+    <div class="flex justify-center p-4 rounded-md shadow-lg sm:flex md:hidden query lg:hidden">
       
       <div class="flex flex-col justify-center gap-y-3 ">
         <div class="flex justify-between w-full text-sm font-semibold text-center text-white rounded-md bg-site-secondary">
@@ -292,6 +292,13 @@
             Show All
           </button>
         </div>
+         <div  class="flex justify-around w-full h-full" v-lazy-load>
+              <div class="flex w-full px-2 " v-for="ad in ads.slice(1,3)" :key="ad.index">
+                <div class="flex rounded-lg " v-if="ad.status == 'active'">
+                    <div class="flex "><img    class="p-4 bg-gray-200 rounded-lg lg:px-4 lg:py-6" :src="ad.image_path" alt=""></div>
+                </div>
+              </div>
+            </div>
       </div>
     </div>
   </div>
@@ -479,6 +486,14 @@ watch: {
 </script>
 
 <style scoped>
+.opener{
+  position: absolute;
+  padding: 1rem 1rem;
+  background-color: gray;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  top:300px
+}
 
 input
 {
@@ -517,6 +532,13 @@ border-radius: 4%;
   height: 1000px !important; 
 
 }
+.query{
+  display:none
+}
+.queryy{
+  display:flex;
+  margin: 1rem;
+}
 .sidenav {
   height: 60vh;
   width: 0;
@@ -551,10 +573,7 @@ border-radius: 4%;
   font-size: 36px;
   margin-left: 50px;
 }
-.opener {
-  top:150px;
-  position: absolute;
-}
+
 
 .imgur
 {
@@ -566,7 +585,7 @@ border-radius: 4%;
   margin-left: 30%;
 }
 
-@media only screen and (max-width: 1366px) {
+@media only screen and (max-width: 1366px) and (max-height: 768px) {
  .imgur
 {
   height: 30vh;
@@ -576,19 +595,94 @@ border-radius: 4%;
 {
   margin-left: 30%
 }
+.query{
+  display:none
+}
+.queryy{
+  display:flex;
+  margin: 1rem;
+}
+.opener{
+  top:190px
+}
 }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) and (max-height: 1366px) {
  .imgur
 {
   height: 30vh;
   width: 50vw
 }
+.query{
+  display:flex
+}
+.queryy{
+  display:none;
+  margin: 1rem;
+}
+.opener{
+  position: absolute;
+  padding: 1rem 1rem;
+  background-color: gray;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  top: 20px;
+}
 .buttons
 {
   margin-left: 30%
 }
+.sidem
+{
+  width: 10vw;
+  height: 15vh;
 }
+.sidenav {
+  height: 30vh;
+  width: 0;
+  position: absolute;
+  z-index: 200;
+  top: 200;
+  
+  background-color: #4B618F;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  position: fixed;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.opener {
+  top:15px;
+  position: absolute;
+}
+iframe
+{
+  height:200px;
+  width: 200px;
+}
+}
+
+
 
 </style>
