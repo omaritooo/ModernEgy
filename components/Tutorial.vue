@@ -5,8 +5,8 @@
   <nav class="relative flex flex-wrap items-center justify-between px-2 bg-blueGray-500">
     <div class="container flex flex-wrap items-center justify-between px-4 ">
       <div class="relative flex justify-between w-full px-4 lg:w-auto lg:static lg:block lg:justify-start">
-        <a class="inline-block py-1 mr-4 text-sm font-bold leading-relaxed text-white uppercase whitespace-nowrap" href="#pablo">
- <img class="w-16 h-16 md:w-32 md:h-32" src="../assets/logo.svg" alt="" >
+        <a class="inline-block mr-4 text-sm font-bold leading-relaxed text-white uppercase whitespace-nowrap" >
+ <img class="w-16 h-16 md:w-20 md:h-20" src="../assets/logo.svg" alt="" >
         </a>
         <button class="block px-3 text-xl leading-none text-white bg-transparent border border-transparent border-solid rounded outline-none cursor-pointer lg:hidden focus:outline-none" type="button" >
             
@@ -47,7 +47,7 @@
 
             </li>
              <li class="nav-item" >
-                           <nuxt-link to="#partnerForm" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:text-yellow-300 dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"   >Become a Partner</nuxt-link>
+                           <nuxt-link to="#pfor" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:text-yellow-300 dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"   >Become a Partner</nuxt-link>
 
             </li>
           </ul>

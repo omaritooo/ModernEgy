@@ -207,7 +207,7 @@ export default {
       geoj: {},
       scre: false,
       mapT: false,
-      zoom: 12,
+      zoom: 11.4,
       r7: {},
       r8: {},
       govt: {},
@@ -597,7 +597,7 @@ color: black;
 @media only screen and (max-width: 1366px) {
    #map{
   width:55vw;
-  height: 55vh;
+  height: 60vh;
 
 }
 }

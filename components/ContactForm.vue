@@ -84,7 +84,7 @@ let data = new FormData();
   width: 100vw;
   
    
-  background-image: url('../assets/simon-zhu-4hluhoRJokI-unsplash.svg');
+  background-image: url('../assets/simon-zhu-4hluhoRJokI-unsplash.png');
   background-size: cover;
   background-position: center;
 

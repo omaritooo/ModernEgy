@@ -9,7 +9,7 @@
 
                 <carousel :scrollPerPage="false" paginationEnabled="false" autoplay='true' perPage="1" autoplayHoverPause="true" paginationSize="0" loop="true" >
                     <slide v-for="part in partners" :key="part.index">
-                      <div v-if="part.image_path !== null || part.image_path !== ''"><img :src="part.image_path"></div>
+                      <div v-if="part.image_path !== null || part.image_path !== ''"><img :alt="part.company_name" :src="part.image_path"></div>
                       <div v-if="part.image_path == null || part.image_path ==''"> {{part.title}}</div>
                     </slide>
                 
@@ -18,28 +18,30 @@
                
                  
                </client-only>
-               <button @click="toto" class="justify-center px-4 py-2 mx-auto text-white rounded-md bg-site-secondary">
+               <!-- <button @click="toto" class="justify-center px-4 py-2 mx-auto text-white rounded-md bg-site-secondary">
                   Become a Partner 
-              </button>
+              </button> -->
              
        </div>
           
 
           
             <transition name="slide-fade" >
-                <div v-if="tot"  class="flex pl-4 text-white bg-site-primary" >
+               
+            </transition>
+             <div id="pfor"  class="flex pl-4 text-white bg-site-primary" >
                     <div class="flex flex-col justify-center w-full p-4 md:w-1/2 md:p-10">
                           <form v-on:submit.prevent="postForm()" class="flex flex-col justify-center w-1/2 mx-auto space-y-2">
-                              <label>Company</label>
-                              <input class="h-8 rounded-sm bg-site-secondary" type="text" name="" id="" v-model="form.company">
-                              <label>Email</label>
-                              <input class="h-8 rounded-sm bg-site-secondary" type="text" name="" id="" v-model="form.email">
-                              <label>name</label>
-                              <input class="h-8 rounded-sm bg-site-secondary" type="text" name="" id="" v-model="form.name">
-                              <label>Phone</label>
-                              <input class="h-8 rounded-sm bg-site-secondary" type="phone" name="" id="" v-model="form.phone">
-                              <label>Message</label>
-                              <textarea class="rounded-sm bg-site-secondary" type="" name="" id="" v-model="form.message"></textarea>
+                              <label for="company">Company</label>
+                              <input class="h-8 rounded-sm bg-site-secondary" type="text" name="company" id="company" v-model="form.company">
+                              <label for="email">Email</label>
+                              <input class="h-8 rounded-sm bg-site-secondary" type="text" name="email" id="email" v-model="form.email">
+                              <label for="name">Name</label>
+                              <input class="h-8 rounded-sm bg-site-secondary" type="text" name="name" id="name" v-model="form.name">
+                              <label for="phone">Phone</label>
+                              <input class="h-8 rounded-sm bg-site-secondary" type="phone" name="phone" id="phone" v-model="form.phone">
+                              <label for="message">Message</label>
+                              <textarea class="rounded-sm bg-site-secondary" type="" name="message" id="message" v-model="form.message"></textarea>
                               <input type="submit"  class="px-4 py-2 mx-auto mt-6 rounded-md md:w-1/4 clicker bg-site-secondary" name="" id="">
                           </form>
                     </div>
@@ -54,7 +56,6 @@
                           </div>
                     </div>
                 </div>
-            </transition>
          
   </div>
 </template>

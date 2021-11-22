@@ -27,7 +27,7 @@ export default {
 .el {
   width: 100vw;
    
-  background-image: url('../assets/waleed-rostom-rd-QleoFpKQ-unsplash.svg');
+  background-image: url('../assets/waleed-rostom-rd-QleoFpKQ-unsplash.png');
   background-size: cover;
   background-position: center;
 

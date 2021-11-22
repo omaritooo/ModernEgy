@@ -8,7 +8,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'Modern Egy is a website that enhances your real estate experience ' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -16,10 +16,16 @@ export default {
       { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
       { rel: 'icon', sizes: '32x32', href: '/favicon-32x32.png' },
       { rel: 'icon', sizes: '16x16', href: '/favicon-16x16.png' },
-      { rel: 'manifest', href: '/site.webmanifest' }
+      { rel: 'manifest', href: '/site.webmanifest' },
+      {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'}
     ]
   },
 
+  generate:{
+    crawler: true
+
+  },
+ 
   router: {
     scrollBehavior(to) {
       if (to.hash) {
@@ -53,6 +59,8 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    'nuxt-compress',
+    '@nuxt/image',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -78,10 +86,22 @@ export default {
       }
     }],
     '@nuxtjs/axios',
-    
+    [
+      'nuxt-compress',
+      {
+        gzip: {
+          threshold: 8192,
+        },
+        brotli: {
+          threshold: 8192,
+        },
+      },
+    ],
     'nuxt-leaflet',
     '@nuxtjs/dotenv',
     '@nuxtjs/fontawesome',
+    'nuxt-ssr-cache',
+    '@nuxt/image'
     
   ],
   fontawesome: {
@@ -95,13 +115,38 @@ export default {
         "faTwitter",
         "faWhatsapp",
         "faPinterest",
-        "faTelegramPlane"
+        "faTelegramPlane",
+        "faLinkedin"
       ],
       solid: ['faArrowRight', 'faTimes', 'faExpandArrowsAlt', 'faCompress']
     }
   },
   
+  cache: {
+   
+    useHostPrefix: false,
+    pages: [
+      '/'
+    ],
+    
+    key(route, context) {
+     
+    },
+ 
+    store: {
+      type: 'memory',
+ 
+      
+      max: 100,
+ 
+      ttl: 60,
+    },
+  },
   
+  image: {
+    // Options
+  },
+
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
