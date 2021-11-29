@@ -1,12 +1,12 @@
 <template>
-  <div class="px-56 py-32">
-    <div class="text-5xl font-bold text-white">Modern Egy</div>
+  <div class="px-6 py-10 md:px-56 md:py-32">
+    <div class="text-3xl font-bold text-white md:text-5xl">Modern Egy</div>
     <div
-      class="flex flex-col py-10 pl-10 pr-56 my-10 rounded-lg  gap-y-10 bg-site-secondary"
+      class="flex flex-col px-4 py-4 my-10 rounded-lg  gap-y-7 md:py-10 md:pl-10 md:pr-56 md:gap-y-10 bg-site-secondary"
     >
       <div class="flex flex-col gap-y-5">
-        <h1 class="text-4xl font-bold text-white">Introduction</h1>
-        <p class="text-xl text-gray-200">
+        <h1 class="text-2xl font-bold text-white md:text-4xl">Introduction</h1>
+        <p class="text-base text-gray-200 md:text-xl">
           The content of the pages of this website is for your general
           information and use only. It is subject to change without notice..
           Please read these conditions carefully before using Modern Egy. By
@@ -15,8 +15,10 @@
         </p>
       </div>
       <div class="flex flex-col gap-y-5">
-        <h1 class="text-4xl font-bold text-white">Modern Egy ROLE</h1>
-        <p class="text-xl text-gray-200">
+        <h1 class="text-2xl font-bold text-white md:text-4xl">
+          Modern Egy ROLE
+        </h1>
+        <p class="text-base text-gray-200 md:text-xl">
           Modern Egy is a real estate market place connects the real estate
           development companies in Egypt with property buyers in the world, we
           develop the real estate development companies' projects by using
@@ -24,8 +26,8 @@
         </p>
       </div>
       <div class="flex flex-col gap-y-5">
-        <h1 class="text-4xl font-bold text-white">YOUR ACCOUNT</h1>
-        <p class="text-xl text-gray-200">
+        <h1 class="text-2xl font-bold text-white md:text-4xl">YOUR ACCOUNT</h1>
+        <p class="text-base text-gray-200 md:text-xl">
           You may need your own Modern Egy account to use certain Modern Egy
           features, and you may be required to be logged into the account, we
           will not charge you for registration or take any fees for using any
@@ -35,8 +37,8 @@
         </p>
       </div>
       <div class="flex flex-col gap-y-5">
-        <h1 class="text-4xl font-bold text-white">OUR LIABILITY</h1>
-        <p class="text-xl text-gray-200">
+        <h1 class="text-2xl font-bold text-white md:text-4xl">OUR LIABILITY</h1>
+        <p class="text-base text-gray-200 md:text-xl">
           We will do our best to ensure that our solution is working without any
           bugs, with high-quality graphics, the live tour is working smoothly
           interactive, and the user experience is friendly, the real estate
@@ -53,8 +55,8 @@
       </div>
 
       <div class="flex flex-col gap-y-5">
-        <h1 class="text-4xl font-bold text-white">Payment</h1>
-        <p class="text-xl text-gray-200">
+        <h1 class="text-2xl font-bold text-white md:text-4xl">Payment</h1>
+        <p class="text-base text-gray-200 md:text-xl">
           we don't responsible for Any transactions or payment methods are
           between the real estate development company and the property buyer, we
           don’t have control over the payment method or receive the payments. We
@@ -64,8 +66,10 @@
       </div>
 
       <div class="flex flex-col gap-y-5">
-        <h1 class="text-4xl font-bold text-white">Prices and offers</h1>
-        <p class="text-xl text-gray-200">
+        <h1 class="text-2xl font-bold text-white md:text-4xl">
+          Prices and offers
+        </h1>
+        <p class="text-base text-gray-200 md:text-xl">
           All the prices mentioned on the website are controlled by real estate
           companies, our website has no responsibility for updating or entering
           the prices, any discount on Modern Egy is offered from the real estate
@@ -75,8 +79,10 @@
       </div>
 
       <div class="flex flex-col gap-y-5">
-        <h1 class="text-4xl font-bold text-white">COMMUNICATIONS</h1>
-        <p class="text-xl text-gray-200">
+        <h1 class="text-2xl font-bold text-white md:text-4xl">
+          COMMUNICATIONS
+        </h1>
+        <p class="text-base text-gray-200 md:text-xl">
           you can communicate with us if you face any technical issues or when
           you have any suggestions by sending an email to support@ModernEgy.com
           or by posting e-mail messages on the website.
@@ -84,8 +90,8 @@
       </div>
 
       <div class="flex flex-col gap-y-5">
-        <h1 class="text-4xl font-bold text-white">Newsletter</h1>
-        <p class="text-xl text-gray-200">
+        <h1 class="text-2xl font-bold text-white md:text-4xl">Newsletter</h1>
+        <p class="text-base text-gray-200 md:text-xl">
           If you subscribe to the newsletter service, we allow using your email
           to keep you updated with adding new real estate developers to Modern
           Egy, new website features, launching a new project, and offers from
@@ -95,8 +101,10 @@
       </div>
 
       <div class="flex flex-col gap-y-5">
-        <h1 class="text-4xl font-bold text-white">Modern Egy SOFTWARE TERMS</h1>
-        <p class="text-xl text-gray-200">
+        <h1 class="text-2xl font-bold text-white md:text-4xl">
+          Modern Egy SOFTWARE TERMS
+        </h1>
+        <p class="text-base text-gray-200 md:text-xl">
           As with any website, we always maintain and update the features of the
           website, we will push notifications when we add a new feature or
           cancel, update any feature, fix any bug immediately and if you have
@@ -106,8 +114,10 @@
       </div>
 
       <div class="flex flex-col gap-y-5">
-        <h1 class="text-4xl font-bold text-white">Website Disclaimer</h1>
-        <p class="text-xl text-gray-200">
+        <h1 class="text-2xl font-bold text-white md:text-4xl">
+          Website Disclaimer
+        </h1>
+        <p class="text-base text-gray-200 md:text-xl">
           the information available through the site (whether provided by Modern
           Egy, you, real estate companies listed in Modern Egy, other third
           parties), including without limitation, (personal information, company
@@ -123,8 +133,8 @@
       </div>
 
       <div class="flex flex-col gap-y-5">
-        <h1 class="text-4xl font-bold text-white">Privacy</h1>
-        <p class="text-xl text-gray-200">
+        <h1 class="text-2xl font-bold text-white md:text-4xl">Privacy</h1>
+        <p class="text-base text-gray-200 md:text-xl">
           We don't sell or rent your personal information to third parties for
           their marketing purposes without your explicit consent. Should we ask
           you to provide certain information by which you can be identified when
@@ -141,8 +151,10 @@
         </p>
       </div>
       <div class="flex flex-col gap-y-5">
-        <h1 class="text-4xl font-bold text-white">OUR CONTACT DETAILS</h1>
-        <p class="text-xl text-gray-200">
+        <h1 class="text-2xl font-bold text-white md:text-4xl">
+          OUR CONTACT DETAILS
+        </h1>
+        <p class="text-base text-gray-200 md:text-xl">
           This Website is developed and maintained by AD Group. Our contact
           details are: Fifth Settlement Compound Retaj (AD Group), Cairo, Egypt
           www.adgrouptech.com Tax Registration Number:
